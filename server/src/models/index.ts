@@ -12,4 +12,4 @@ User.hasMany(Event, {
 
 Event.belongsTo(User);
 
-export { User, Event}
+export { User, Event};
