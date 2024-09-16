@@ -1,6 +1,6 @@
 import { Router, Request, Response } from "express";
-import { Event } from "../../models";
-import { User } from "../../models";
+import { Event } from "../../models/index.js";
+import { User } from "../../models/index.js";
 
 // create functions and routes for getting event data
 // need routes for: creating single event, updating single event, deleting single event, finding single event, finding all events for the logged-in user, finding all events for the logged-in user for the current day
