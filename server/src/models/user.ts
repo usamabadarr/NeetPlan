@@ -8,9 +8,10 @@ export class User extends Model<
     InferCreationAttributes<User>> 
 {
     declare id: CreationOptional<number>;
-    declare username: string;
     declare email: string;
     declare password: string;
+    declare name: string;
+    declare location: string;
 
     async hashPassword(password: string) {
         this.password = await bcrypt.hash(password, 10)
@@ -27,10 +28,6 @@ export function UserFactory(sequelize: Sequelize) {
                 primaryKey: true
 
             },
-            username: {
-                type: DataTypes.STRING,
-                allowNull: false,
-            },
             email: {
                 type: DataTypes.STRING,
                 allowNull: false,
@@ -43,6 +40,14 @@ export function UserFactory(sequelize: Sequelize) {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
+            name: {
+                type: DataTypes.STRING,
+                allowNull: true,
+            },
+            location: {
+                type: DataTypes.STRING,
+                allowNull: true,
+            }
         },
         {
             sequelize: sequelize,
@@ -51,9 +56,6 @@ export function UserFactory(sequelize: Sequelize) {
             hooks: {
                 beforeCreate: async (newUser: User) => {
                     await newUser.hashPassword(newUser.password)
-                },
-                beforeUpdate: async (updateUser: User) => {
-                    await updateUser.hashPassword(updateUser.password)
                 },
             }
         }

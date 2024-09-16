@@ -10,7 +10,8 @@ export class Event extends Model<
     declare id: CreationOptional<number>;
     declare name: string;
     declare date: string;
-    declare time: string;
+    declare startTime: string;
+    declare endTime: string;
     declare notes: string;
     declare userID: ForeignKey<User['id']>
 
@@ -33,9 +34,13 @@ export function EventFactory(sequelize: Sequelize) {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            time: {
+            startTime: {
                 type: DataTypes.STRING,
-                allowNull: false,
+                allowNull: true,
+            },
+            endTime: {
+                type: DataTypes.STRING,
+                allowNull: true,
             },
             notes: {
                 type: DataTypes.STRING,
