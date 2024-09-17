@@ -1,5 +1,6 @@
 import { Router, Request, Response } from "express";
 import { User } from "../../models/index.js";
+import jwt from "jsonwebtoken"
 
 // create functions and routes for updating and deleting user accounts
 
@@ -39,7 +40,12 @@ router.put('/', async (req: Request, res: Response) => {
                 if (req.body.name) {user.name = req.body.name}
                 if (req.body.location) {user.location = req.body.location}
                 await user.save()
-                res.json(user)
+
+                const secretKey = process.env.JWT_SECRET_KEY || ''
+
+                const token = jwt.sign({email: user.email, location: user.location}, secretKey, {expiresIn: '1d'})
+            
+                res.json({token: token, user: user})
             }
             else {res.status(404).json({message: 'user not found'})}
 

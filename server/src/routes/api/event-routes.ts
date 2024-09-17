@@ -9,7 +9,7 @@ import { User } from "../../models/index.js";
 
 const router = Router()
 
-//post new event. Incoming req.body object should at least contain key-values for event name and date. Can also include optional start time, end time, and note.
+//post new event. Incoming req.body object should at least contain key-values for event name and date. Can also include optional start time, end time, and notes.
 router.post('/', async (req: Request, res: Response) => {
     const {name, date, startTime, endTime, notes} = req.body
     try {
