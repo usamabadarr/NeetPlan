@@ -11,6 +11,7 @@ const router = Router()
 
 //post new event. Incoming req.body object should at least contain key-values for event name and date. Can also include optional start time, end time, and notes.
 router.post('/', async (req: Request, res: Response) => {
+    const {name, date, startTime, endTime, notes} = req.body
     try {
         const user = await User.findOne({
             where: {
@@ -18,10 +19,8 @@ router.post('/', async (req: Request, res: Response) => {
             }
         })
         if (user) {
-        const {name, date, startTime, endTime, notes} = req.body
-        const event = await Event.create({name:name, date: date, startTime: startTime, endTime: endTime, notes: notes, userID: user.id})
-        res.status(201).json(event)
-        }
+            const event = await Event.create({name, date, startTime, endTime, notes, UserId: user.id})
+            res.status(201).json(event)}
         else res.status(404).json({message: 'user not found'})
     } catch (error) {
         res.status(500).json({error: 'internal server error'})
@@ -81,7 +80,38 @@ router.get('/all', async (req: Request, res: Response) => {
         if (user) {
             const events = await Event.findAll({
                 where: {
-                    userID: user.id
+                    UserId: user.id
+                }
+            })
+            if (events) {
+                res.status(200).json(events)
+            }
+            else res.status(404).json({message: 'no events found'})
+        }
+        else res.status(500).json({message: 'failed to fetch user'})
+
+    } catch (error: any) {
+        res.status(500).json({message: error.message})
+    }
+});
+
+
+// get all events from the logged-in user for the current day
+
+router.get('/today', async(req:Request, res: Response) => {
+    const today = new Date().toLocaleDateString()
+    // today represents the current date in the formate mm/dd/yyyy with no leading zeroes.
+      try {
+        const user = await User.findOne({
+            where: {
+                email: req.user?.email
+            }
+        })
+        if (user) {
+            const events = await Event.findAll({
+                where: {
+                    UserId: user.id,
+                    date: today
                 }
             })
             if (events) {
@@ -112,36 +142,6 @@ router.get('/:id', async(req: Request, res: Response) => {
     }
 })
 
-
-// get all events from the logged-in user for the current day
-
-router.get('/today', async(req:Request, res: Response) => {
-    const today = new Date().toLocaleDateString()
-    // today represents the current date in the formate mm/dd/yyyy with no leading zeroes.
-      try {
-        const user = await User.findOne({
-            where: {
-                email: req.user?.email
-            }
-        })
-        if (user) {
-            const events = await Event.findAll({
-                where: {
-                    userID: user.id,
-                    date: today
-                }
-            })
-            if (events) {
-                res.status(200).json(events)
-            }
-            else res.status(404).json({message: 'no events found'})
-        }
-        else res.status(500).json({message: 'failed to fetch user'})
-
-    } catch (error: any) {
-        res.status(500).json({message: error.message})
-    }
-});
 
 
 export default router

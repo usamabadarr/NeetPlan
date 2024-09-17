@@ -16,13 +16,13 @@ const authentication = (req: Request, res: Response, next: NextFunction) => {
         const secretKey = process.env.JWT_SECRET_KEY || ''
 
         jwt.verify(token, secretKey, (err, user) => {
-            if (err) {return res.sendStatus(403).json({message: 'test'})}
+            if (err) {return res.sendStatus(403)}
             else {
                 req.user = user as JwtPayload
                 return next()}
             });
     }
-    else {res.sendStatus(401).json({message: 'test'})}
+    else {res.sendStatus(401)}
 }
 
 
