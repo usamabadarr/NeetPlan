@@ -15,7 +15,7 @@ router.post('/', async (req: Request, res: Response) => {
     try {
         const user = await User.findOne({
             where: {
-                email: req.user!.email
+                email: req.user?.email
             }
         })
         if (user) {
@@ -53,11 +53,11 @@ router.put('/:id', async (req: Request, res: Response) => {
     try {
         const event = await Event.findByPk(id)
         if (event) {
-            event.name = req.body.name;
-            event.date = req.body.date;
-            if (req.body.startTime) {event.startTime = req.body.startTime};
-            if (req.body.endTime) {event.endTime = req.body.endTime};
-            if (req.body.notes) {event.notes = req.body.notes};
+            event.name = req.body?.name;
+            event.date = req.body?.date;
+            event.startTime = req.body?.startTime;
+            event.endTime = req.body?.endTime;
+            event.notes = req.body?.notes;
             await event.save()
             res.json(event)
         }
@@ -71,11 +71,10 @@ router.put('/:id', async (req: Request, res: Response) => {
 
 // get all events for the logged-in user. Middleware should have placed decrypted token payload into req.body.token.
 router.get('/all', async (req: Request, res: Response) => {
-    const {email} = req.user!
     try {
         const user = await User.findOne({
             where: {
-                email: email
+                email: req.user?.email
             }
         })
         if (user) {
@@ -102,11 +101,10 @@ router.get('/all', async (req: Request, res: Response) => {
 router.get('/today', async(req:Request, res: Response) => {
     const today = new Date().toLocaleDateString()
     // today represents the current date in the formate mm/dd/yyyy with no leading zeroes.
-    const {email} = req.user!
-    try {
+      try {
         const user = await User.findOne({
             where: {
-                email: email
+                email: req.user?.email
             }
         })
         if (user) {
