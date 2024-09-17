@@ -21,7 +21,7 @@ router.post('/signup', async (req: Request, res: Response) => {
     catch (error: any) {res.status(400).json({message: error.message})}
 })
 
-router.post('login', async (req: Request, res: Response) => {
+router.post('/login', async (req: Request, res: Response) => {
     const {email, password} = req.body
     const user = await User.findOne({
         where: {
