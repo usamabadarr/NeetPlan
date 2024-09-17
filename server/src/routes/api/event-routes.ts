@@ -9,11 +9,20 @@ import { User } from "../../models/index.js";
 
 const router = Router()
 
-//post new event. Incoming req.body object should at least contain key-values for event name and date. Can also include optional start time, end time, and note.
+//post new event. Incoming req.body object should at least contain key-values for event name and date. Can also include optional start time, end time, and notes.
 router.post('/', async (req: Request, res: Response) => {
     try {
-        const event = await Event.create(req.body)
+        const user = await User.findOne({
+            where: {
+                email: req.user!.email
+            }
+        })
+        if (user) {
+        const {name, date, startTime, endTime, notes} = req.body
+        const event = await Event.create({name:name, date: date, startTime: startTime, endTime: endTime, notes: notes, userID: user.id})
         res.status(201).json(event)
+        }
+        else res.status(404).json({message: 'user not found'})
     } catch (error) {
         res.status(500).json({error: 'internal server error'})
     }
@@ -63,7 +72,7 @@ router.put('/:id', async (req: Request, res: Response) => {
 
 // get all events for the logged-in user. Middleware should have placed decrypted token payload into req.body.token.
 router.get('/all', async (req: Request, res: Response) => {
-    const {email} = req.body.token
+    const {email} = req.user!
     try {
         const user = await User.findOne({
             where: {
@@ -110,7 +119,7 @@ router.get('/:id', async(req: Request, res: Response) => {
 router.get('/today', async(req:Request, res: Response) => {
     const today = new Date().toLocaleDateString()
     // today represents the current date in the formate mm/dd/yyyy with no leading zeroes.
-    const {email} = req.body.token
+    const {email} = req.user!
     try {
         const user = await User.findOne({
             where: {
