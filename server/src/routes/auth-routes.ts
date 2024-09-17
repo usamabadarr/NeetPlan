@@ -15,7 +15,7 @@ router.post('/signup', async (req: Request, res: Response) => {
     
     const secretKey = process.env.JWT_SECRET_KEY || ''
 
-    const token = jwt.sign({email: newUser.email, location: newUser.location}, secretKey, {expiresIn: '1d'})
+    const token = jwt.sign({email: newUser.email, location: newUser.location, name: newUser.name}, secretKey, {expiresIn: '1d'})
     res.json({token: token})
     }
     catch (error: any) {res.status(400).json({message: error.message})}
@@ -36,7 +36,7 @@ router.post('/login', async (req: Request, res: Response) => {
 
     const secretKey = process.env.JWT_SECRET_KEY || ''
 
-    const token = jwt.sign({email: user.email, location: user.location}, secretKey, {expiresIn: '1d'})
+    const token = jwt.sign({email: user.email, location: user.location, name: user.name}, secretKey, {expiresIn: '1d'})
 
     return res.json({token: token})
 

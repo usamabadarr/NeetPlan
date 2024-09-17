@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken';
 interface JwtPayload {
     email: string;
     location: string;
+    name: string;
 }
 
 const authentication = (req: Request, res: Response, next: NextFunction) => {
