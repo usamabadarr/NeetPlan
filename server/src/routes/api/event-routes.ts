@@ -132,11 +132,24 @@ router.get('/today', async(req:Request, res: Response) => {
 router.get('/:id', async(req: Request, res: Response) => {
     const id = req.params.id
     try {
-        const event = await Event.findByPk(id)
-        if (event) {
-            res.status(200).json(event)
+        const user = await User.findOne({
+            where: {
+                email: req.user?.email
+            }
+        })
+        if (user) {
+            const event = await Event.findOne({
+                where: {
+                    id: id,
+                    UserId: user.id,
+                }
+            })
+            if (event) {
+                res.status(200).json(event)
+            }
+            else {res.status(404).json({message: 'event not found'})}
         }
-        else {res.status(404).json({message: 'event not found'})}
+        else {res.status(404).json({ message: 'could not complete request'})}
     } catch (error:any) {
         res.status(500).json({message: error.message})
     }

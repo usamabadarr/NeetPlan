@@ -9,7 +9,7 @@ router.post('/signup', async (req, res) => {
         const { email, password, name, location } = req.body;
         const newUser = await User.create({ email: email, password: password, name: name, location: location });
         const secretKey = process.env.JWT_SECRET_KEY || '';
-        const token = jwt.sign({ email: newUser.email, location: newUser.location }, secretKey, { expiresIn: '1d' });
+        const token = jwt.sign({ email: newUser.email, location: newUser.location, name: newUser.name }, secretKey, { expiresIn: '1d' });
         res.json({ token: token });
     }
     catch (error) {
@@ -31,7 +31,7 @@ router.post('/login', async (req, res) => {
         return res.status(401).json({ message: 'Authentication failed' });
     }
     const secretKey = process.env.JWT_SECRET_KEY || '';
-    const token = jwt.sign({ email: user.email, location: user.location }, secretKey, { expiresIn: '1d' });
+    const token = jwt.sign({ email: user.email, location: user.location, name: user.name }, secretKey, { expiresIn: '1d' });
     return res.json({ token: token });
 });
 export default router;

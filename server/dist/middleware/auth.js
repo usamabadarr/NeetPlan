@@ -6,7 +6,7 @@ const authentication = (req, res, next) => {
         const secretKey = process.env.JWT_SECRET_KEY || '';
         jwt.verify(token, secretKey, (err, user) => {
             if (err) {
-                return res.sendStatus(403).json({ message: 'test' });
+                return res.sendStatus(403);
             }
             else {
                 req.user = user;
@@ -15,7 +15,7 @@ const authentication = (req, res, next) => {
         });
     }
     else {
-        res.sendStatus(401).json({ message: 'test' });
+        res.sendStatus(401);
     }
 };
 export default authentication;
