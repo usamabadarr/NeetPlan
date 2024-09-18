@@ -110,8 +110,3 @@ function App() {
 }
 
 export default App;
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 0d0b7833be6dcf2bdef9b4b3cdca9bfdda5e724e
