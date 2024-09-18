@@ -16,11 +16,12 @@ class AuthService {
             const decoded = jwtDecode<JwtPayload>(token);
             console.log(decoded);
 
-            if (decoded?.exp && decoded?.exp < Date.now()) {
+            if (decoded?.exp && decoded?.exp < Date.now()/1000) {
                 return true;
             } 
         } catch (error) {
-            return false;
+            // if an error occurs in decoding the token due to improper format, we should treat the token as invalid so that the user is not logged in.
+            return true;
         }
     }
 

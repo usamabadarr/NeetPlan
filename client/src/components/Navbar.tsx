@@ -7,19 +7,13 @@ const Navbar = () => {
             <ul>
                 <li className = 'nav-item'>
                     <button>
-                        <Link to = ''>Login</Link>
+                        <Link to = '/'>Home</Link>
                     </button>
                 </li>
 
                 <li className = 'nav-item'>
                     <button>
-                        <Link to = ''>About</Link>
-                    </button>
-                </li>
-
-                <li className = 'nav-item'>
-                    <button>
-                        <Link to = ''>Contact</Link>
+                        <Link to = '/event'>Events</Link>
                     </button>
                 </li>
             </ul>

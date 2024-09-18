@@ -5,6 +5,10 @@ import './index.css'
 import App from './App.tsx'
 import ErrorPage from './pages/ErrorPage.tsx';
 import LandingPage from './pages/LandingPage.tsx';
+import EventPage from './pages/EventPage.tsx';
+import LoginPage from './pages/LoginPage.tsx';
+import SignupPage from './pages/SignupPage.tsx'
+
 
 const router = createBrowserRouter([
   {
@@ -15,6 +19,18 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <LandingPage />
+      },
+      {
+        path: '/event',
+        element: <EventPage/>
+      },
+      {
+        path: '/login',
+        element: <LoginPage/>
+      },
+      {
+        path: '/signup',
+        element: <SignupPage/>
       }
     ]
   }
