@@ -34,11 +34,23 @@ function App() {
 
   // Fetching Weather Data Based on User's Location
   useEffect(() => {
-    // Fetching Weather for Location
-    console.log(`Fetching weather for location: ${user.location}`);
-    setTimeout(() => {
-      setWeather({ temperature: '75°F', description: 'Sunny' });
-    }, 2000);
+    const fetchWeather = async () => {
+      try {
+        const response = await fetch(
+          `https://api.openweathermap.org/data/2.5/weather?q=${user.location}&appid= ADD_API_KEY_HERE`
+        );
+        const data = await response.json();
+        // Convert temperature from Kelvin to Fahrenheit
+        const temperatureInFahrenheit = Math.round((data.main.temp - 273.15) * 9/5 + 32);
+        setWeather({
+          temperature: `${temperatureInFahrenheit}°F`,
+          description: data.weather[0].description,
+        });
+      } catch (error) {
+        console.error('Error fetching weather data:', error);
+      }
+    };
+    fetchWeather();
   }, [user.location]);
 
   return (
@@ -48,15 +60,15 @@ function App() {
         <h1>Daily Tracker</h1>
         <nav>
           <ul>
-            <li><a href="#tasks">Tasks</a></li>
-            <li><a href="#profile">Profile</a></li>
-            <li><a href="#reminders">Reminders</a></li>
-            <li><a href="#weather">Weather</a></li>
+            {/* Adding aria-labels for accessibility */}
+            <li><a href="#tasks" aria-label="Tasks">Tasks</a></li>
+            <li><a href="#profile" aria-label="Profile">Profile</a></li>
+            <li><a href="#reminders" aria-label="Reminders">Reminders</a></li>
+            <li><a href="#weather" aria-label="Weather">Weather</a></li>
           </ul>
         </nav>
       </header>
 
-      {/* Main content */}
       <main>
         {/* User Profile Section */}
         <section id="profile">
@@ -73,7 +85,11 @@ function App() {
         {/* Reminders Section */}
         <section id="reminders">
           <h2>Reminders</h2>
-          <Reminders reminders={reminders} />
+          {reminders.length > 0 ? (
+            <Reminders reminders={reminders} />
+          ) : (
+            <p>No reminders set</p>
+          )}
         </section>
 
         {/* Weather Widget Section */}
@@ -92,3 +108,5 @@ function App() {
 }
 
 export default App;
+
+
