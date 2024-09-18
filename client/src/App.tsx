@@ -3,10 +3,10 @@ import React, { useState, useEffect } from 'react';
 import './Index.css';
 
 
-import UserProfile from './Components/UserProfile';
-import TaskList from './Components/TaskList';
-import WeatherWidget from './Components/WeatherWidget';
-import Reminders from './Components/Reminders';
+import UserProfile from './components/UserProfile';
+import TaskList from './components/TaskList';
+import WeatherWidget from './components/WeatherWidget';
+import Reminders from './components/Reminders';
 
 function App() {
   // Storing User Data
