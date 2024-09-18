@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom/client';
 import  { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css'
 
-import App from './App.tsx'
+import App from './app(1).tsx'
 import ErrorPage from './pages/ErrorPage.tsx';
 import LandingPage from './pages/LandingPage.tsx';
 import EventPage from './pages/EventPage.tsx';
