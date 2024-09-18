@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+
 import './Index.css';
+
 
 import UserProfile from './Components/UserProfile';
 import TaskList from './Components/TaskList';
@@ -109,4 +111,7 @@ function App() {
 
 export default App;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0d0b7833be6dcf2bdef9b4b3cdca9bfdda5e724e

@@ -13,7 +13,7 @@ export class Event extends Model<
     declare startTime: string;
     declare endTime: string;
     declare notes: string;
-    declare userID: ForeignKey<User['id']>
+    declare UserId: ForeignKey<User['id']>
 
 }
 
