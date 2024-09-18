@@ -1,10 +1,12 @@
-import {useLayoutEffect, useState } from 'react';
+import {useEffect, useLayoutEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import ErrorPage from './ErrorPage';
+import { ApiMessage } from '../interfaces/ApiMessage.tsx';
 import auth from '../utils/auth.ts';
 
 const LandingPage = () => {
-  const [error /*, setError*/] = useState(false);
+  const [error, setError] = useState(false);
   const [loginCheck, setLoginCheck] = useState(false);
   
   const checkLogin = () => {
