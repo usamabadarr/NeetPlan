@@ -17,7 +17,7 @@ router.delete('/', async (req: Request, res: Response) => {
         })
             if (user) {
                 await user.destroy()
-                res.json({message: 'user deleted'})
+                res.status(204).json({message: 'user deleted'})
             }
             else {res.status(404).json({message: 'user not found'})}
 
@@ -44,7 +44,7 @@ router.put('/', async (req: Request, res: Response) => {
 
                 const token = jwt.sign({email: user.email, location: user.location, name: user.name}, secretKey, {expiresIn: '1d'})
             
-                res.json({token: token, user: user})
+                res.status(200).json({token: token})
             }
             else {res.status(404).json({message: 'user not found'})}
 

@@ -1,12 +1,12 @@
-import {useEffect, useLayoutEffect, useState } from 'react';
+import {useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import ErrorPage from './ErrorPage';
-import { ApiMessage } from '../interfaces/ApiMessage.tsx';
+import HomePage from './HomePage.tsx';
 import auth from '../utils/auth.ts';
 
+
 const LandingPage = () => {
-  const [error, setError] = useState(false);
+  
   const [loginCheck, setLoginCheck] = useState(false);
   
   const checkLogin = () => {
@@ -15,13 +15,9 @@ const LandingPage = () => {
     }
   };
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     checkLogin();
   }, []);
-
-  if (error) {
-    return <ErrorPage />;
-  }
 
 
   return (
@@ -29,15 +25,12 @@ const LandingPage = () => {
     {
       !loginCheck ? (
         <div className = 'login-notice'>
-          <h1>Daily Planner</h1>
+          <h2><Link to="/login">Login</Link> or <Link to="/signup">Sign up</Link> to continue</h2>
         </div>
       ) : (
-        <div>
-          <h1>Congrats! You're logged in</h1>
-        </div>
+        <HomePage/>
       )
     }
-      <h1>Daily Planner</h1>
     </>
   )
 }
