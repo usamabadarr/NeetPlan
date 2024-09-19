@@ -5,7 +5,7 @@ import { User } from "../../models/index.js";
 // create functions and routes for getting event data
 // need routes for: creating single event, updating single event, deleting single event, finding single event, finding all events for the logged-in user, finding all events for the logged-in user for the current day
 
-// routes start with /event
+// routes start with api/event
 
 const router = Router()
 
@@ -35,7 +35,7 @@ router.delete('/:id', async (req: Request, res: Response) => {
         const event = await Event.findByPk(id)
         if (event) {
             await event.destroy()
-            res.json({message: 'event deleted'})
+            res.status(200).json({message: 'event deleted'})
         }
         else {
             res.status(404).json({message: 'event not found'})
@@ -59,7 +59,7 @@ router.put('/:id', async (req: Request, res: Response) => {
             event.endTime = req.body?.endTime;
             event.notes = req.body?.notes;
             await event.save()
-            res.json(event)
+            res.status(200).json(event)
         }
         else {
             res.status(404).json({message: 'event not found'})
