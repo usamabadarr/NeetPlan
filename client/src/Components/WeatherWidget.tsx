@@ -2,19 +2,20 @@ import React from 'react';
 
 type WeatherProps = {
   weather: {
-    temperature: string;
-    description: string;
+    temp: string;
+    weather: string;
+    location: string;
   };
 };
 
 const WeatherWidget: React.FC<WeatherProps> = ({ weather }) => {
   return (
     <div className="weather-widget">
-      <h3>Current Weather</h3>
+      <h3>Current Weather for {weather.location}</h3>
       {weather ? (
         <>
-          <p>Temperature: {weather.temperature}</p>
-          <p>Description: {weather.description}</p>
+          <p>Temperature: {weather.temp}</p>
+          <p>Description: {weather.weather}</p>
         </>
       ) : (
         <p>Weather data unavailable</p>

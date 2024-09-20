@@ -59,7 +59,7 @@ const UserPage = () => {
             />
           </div>
           <div className='form-group'>
-            <label>Location</label>
+            <label>Zip Code</label>
             <input
               className='form-input'
               type='text'

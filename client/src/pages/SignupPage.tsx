@@ -66,8 +66,8 @@ const SignupPage = () => {
             />
           </div>
           <div className='form-group'>
-            <label>Location</label>
-            <p className='optional'> *optional</p>
+            <label>Zip Code</label>
+            <p className='optional'> *optional.</p>
             <input
               className='form-input'
               type='text'
