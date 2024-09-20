@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import './Index.css';
-
-
+import fetchWeather from '../api/weatherAPI';
 import UserProfile from '../components/UserProfile';
 import TaskList from '../components/TaskList';
 import WeatherWidget from '../components/WeatherWidget';
@@ -25,8 +23,9 @@ function App() {
 
   // Storing Weather Data
   const [weather, setWeather] = useState({
-    temperature: '72°F',
-    description: 'Partly Cloudy',
+    temp: '',
+    weather: '',
+    location: ''
   });
 
   // Storing Reminders
@@ -34,26 +33,17 @@ function App() {
     { id: 1, taskId: 1, reminderTime: '2024-09-16T08:00:00Z' },
   ]);
 
+
+  const getWeather = async() => {
+    const weatherData = await fetchWeather();
+    if (weatherData.temp && weatherData.weather && weatherData.location) {
+      setWeather({temp: weatherData.temp, weather: weatherData.weather, location: weatherData.location})
+    }
+  }
+
   // Fetching Weather Data Based on User's Location
-  useEffect(() => {
-    const fetchWeather = async () => {
-      try {
-        const response = await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?q=${user.location}&appid= ADD_API_KEY_HERE`
-        );
-        const data = await response.json();
-        // Convert temperature from Kelvin to Fahrenheit
-        const temperatureInFahrenheit = Math.round((data.main.temp - 273.15) * 9/5 + 32);
-        setWeather({
-          temperature: `${temperatureInFahrenheit}°F`,
-          description: data.weather[0].description,
-        });
-      } catch (error) {
-        console.error('Error fetching weather data:', error);
-      }
-    };
-    fetchWeather();
-  }, [user.location]);
+  useEffect(() => {getWeather()
+  }, []);
 
   return (
     <div className="App">
