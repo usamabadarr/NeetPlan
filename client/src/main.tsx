@@ -12,6 +12,7 @@ import UserPage from './pages/UserPage.tsx';
 import EventEditPage from './pages/EventEditPage.tsx';
 import EventCreatePage from './pages/EventCreatePage.tsx';
 import DeleteConfirmPage from './pages/DeleteConfirmPage.tsx';
+import AboutPage from './pages/AboutPage.tsx';
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: '/delete-confirm',
         element: <DeleteConfirmPage/>
+      },
+      {
+        path: '/about',
+        element: <AboutPage />
       }
     ]
   }
