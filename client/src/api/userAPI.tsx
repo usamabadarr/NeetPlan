@@ -15,7 +15,7 @@ export const deleteUser = async () => {
 
     if (!response.ok) {throw new Error('Invalid API response')}
 
-    return await response.json()
+    return response
 
     } catch(error) {
         return Promise.reject('Error: Could not delete user')
