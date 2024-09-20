@@ -18,7 +18,7 @@ const Navbar = () => {
 
     return (
         <nav className = 'nav'>
-            <h1>Daily Planner</h1>;
+            <h1>Daily Planner</h1>
             {loginCheck? (<ul>
                 <li className = 'nav-item'>
                     <button>
