@@ -18,14 +18,15 @@ const Navbar = () => {
 
     return (
         <nav className = 'nav'>
-            <h1>Daily Planner</h1>;
-            {loginCheck? (<ul>
+            <h1>Daily Planner</h1>
+            <ul>
                 <li className = 'nav-item'>
                     <button>
                         <Link to = '/'>Home</Link>
                     </button>
                 </li>
-                <li className = 'nav-item'>
+                {loginCheck? (<>
+                    <li className = 'nav-item'>
                     <button>
                         <Link to = '/event'>Events</Link>
                     </button>
@@ -40,9 +41,8 @@ const Navbar = () => {
                         <Link to=''>Logout</Link>
                     </button>
                 </li>
-
-            </ul>) 
-            : (<></>)}
+                </>): (<></>)}
+            </ul>
         </nav>
     )
 }
