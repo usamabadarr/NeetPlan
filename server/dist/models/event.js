@@ -1,6 +1,16 @@
 import { Model, DataTypes } from "sequelize";
 // define event model and export
 export class Event extends Model {
+    formatDate(date) {
+        try {
+            const dateArray = date.split('/');
+            const newDate = (`${parseInt(dateArray[0])}/${parseInt(dateArray[1])}/${parseInt(dateArray[2])}`);
+            this.date = newDate;
+        }
+        catch (error) {
+            this.date = date;
+        }
+    }
 }
 export function EventFactory(sequelize) {
     Event.init({
@@ -33,6 +43,14 @@ export function EventFactory(sequelize) {
         sequelize: sequelize,
         timestamps: false,
         tableName: 'event',
+        hooks: {
+            beforeCreate: (newEvent) => {
+                newEvent.formatDate(newEvent.date);
+            },
+            beforeUpdate: (updatedEvent) => {
+                updatedEvent.formatDate(updatedEvent.date);
+            }
+        }
     });
     return Event;
 }
