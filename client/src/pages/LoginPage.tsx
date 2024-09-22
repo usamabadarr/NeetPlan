@@ -1,6 +1,7 @@
 import { login } from "../api/authAPI"
 import { useState, ChangeEvent, FormEvent } from "react";
 import auth from "../utils/auth";
+import { Link } from "react-router-dom";
 
 
 const LoginPage = () => {
@@ -57,6 +58,9 @@ const LoginPage = () => {
           <div className='form-group'>
             <button className='btn btn-primary' type='submit'>
               Login
+            </button>
+            <button className='btn btn-primary' type='submit'>
+              <Link to="/">Back</Link>
             </button>
           </div>
         </form>

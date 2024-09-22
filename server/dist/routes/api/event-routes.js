@@ -92,9 +92,9 @@ router.get('/all', async (req, res) => {
     }
 });
 // get all events from the logged-in user for the current day
-router.get('/today', async (req, res) => {
-    const today = new Date().toLocaleDateString();
-    // today represents the current date in the formate mm/dd/yyyy with no leading zeroes.
+router.get('/day/:id', async (req, res) => {
+    // formate date into mm/dd/yyyy with no leading zeroes.
+    const date = (req.params.id.split('-').join('/'));
     try {
         const user = await User.findOne({
             where: {
@@ -105,7 +105,7 @@ router.get('/today', async (req, res) => {
             const events = await Event.findAll({
                 where: {
                     UserId: user.id,
-                    date: today
+                    date: date
                 }
             });
             if (events) {

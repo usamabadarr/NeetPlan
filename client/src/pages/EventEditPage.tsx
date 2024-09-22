@@ -1,8 +1,9 @@
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import { useState, useEffect, ChangeEvent, FormEvent } from "react"
 
 import { getSingleEvent, deleteEvent, updateEvent } from "../api/eventAPI"
 import { EventData } from "../interfaces/EventData"
+
 
 function EventEditPage() {
 
@@ -28,7 +29,7 @@ function EventEditPage() {
     },[])
 
     const handleChange = (
-        event: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+        event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
       ) => {
         const { name, value } = event.target;
         setEventUpdate({
@@ -49,14 +50,10 @@ function EventEditPage() {
         }
       };
 
-    const ReturnHome = () => {
-      window.location.assign('/event')
-    }
-
     const deleteThis = () => {
       if (id) {
       deleteEvent(id)
-      window.location.assign('/event')
+      window.location.assign('/all')
       }
     }
 
@@ -66,7 +63,7 @@ function EventEditPage() {
               <form className='form login-form' onSubmit={handleSubmit}>
                 <h1>Event details</h1>
                 <div className='form-group'>
-                  <label>Name</label>
+                  <label>Event Name</label>
                   <input
                     className='form-input'
                     type='text'
@@ -77,6 +74,7 @@ function EventEditPage() {
                 </div>
                 <div className='form-group'>
                   <label>Date</label>
+                  <p>*Please use m/d/yyyy format!</p>
                   <input
                     className='form-input'
                     type='text'
@@ -107,9 +105,8 @@ function EventEditPage() {
                 </div>
                 <div className='form-group'>
                   <label>Notes</label>
-                  <input
+                  <textarea
                     className='form-input'
-                    type='text'
                     name='notes'
                     value={eventUpdate.notes || ''}
                     onChange={handleChange}
@@ -122,7 +119,7 @@ function EventEditPage() {
                 </div>
               </form>
               <div>
-                <button className="btn" onClick={ReturnHome}>Cancel</button>
+                <button className="btn"><Link to="/all">Cancel</Link></button>
                 <button className="btn btn-delete" onClick={deleteThis}>Delete</button>
               </div>
             </div>
