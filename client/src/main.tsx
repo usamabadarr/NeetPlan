@@ -6,7 +6,6 @@ import App from './App.tsx'
 
 import ErrorPage from './pages/ErrorPage.tsx';
 import LandingPage from './pages/LandingPage.tsx';
-import EventPage from './pages/EventPage.tsx';
 import LoginPage from './pages/LoginPage.tsx';
 import SignupPage from './pages/SignupPage.tsx';
 import UserPage from './pages/UserPage.tsx';
@@ -14,6 +13,9 @@ import EventEditPage from './pages/EventEditPage.tsx';
 import EventCreatePage from './pages/EventCreatePage.tsx';
 import DeleteConfirmPage from './pages/DeleteConfirmPage.tsx';
 import AboutPage from './pages/AboutPage.tsx';
+import Calendar from './components/Calendar.tsx';
+import EventDatePage from './pages/EventDatePage.tsx';
+import AllEventPage from './pages/AllEventPage.tsx';
 
 const router = createBrowserRouter([
   {
@@ -26,8 +28,8 @@ const router = createBrowserRouter([
         element: <LandingPage />
       },
       {
-        path: '/event',
-        element: <EventPage/>
+        path: '/calendar',
+        element: <Calendar/>
       },
       {
         path: '/login',
@@ -40,6 +42,14 @@ const router = createBrowserRouter([
       {
         path: '/user',
         element: <UserPage/>
+      },
+      {
+        path: '/events/:id',
+        element: <EventDatePage/>
+      },
+      {
+        path: '/all',
+        element: <AllEventPage/>
       },
       {
         path: '/event-edit/:id',

@@ -98,34 +98,35 @@ router.get('/all', async (req: Request, res: Response) => {
 
 // get all events from the logged-in user for the current day
 
-router.get('/today', async(req:Request, res: Response) => {
-    const today = new Date().toLocaleDateString()
-    // today represents the current date in the formate mm/dd/yyyy with no leading zeroes.
-      try {
+router.get('/day/:id', async (req, res) => {
+    // formate date into mm/dd/yyyy with no leading zeroes.
+    const date = (req.params.id.split('-').join('/'))
+    try {
         const user = await User.findOne({
             where: {
                 email: req.user?.email
             }
-        })
+        });
         if (user) {
             const events = await Event.findAll({
                 where: {
                     UserId: user.id,
-                    date: today
+                    date: date
                 }
-            })
+            });
             if (events) {
-                res.status(200).json(events)
+                res.status(200).json(events);
             }
-            else res.status(404).json({message: 'no events found'})
+            else
+                res.status(404).json({ message: 'no events found' });
         }
-        else res.status(500).json({message: 'failed to fetch user'})
-
-    } catch (error: any) {
-        res.status(500).json({message: error.message})
+        else
+            res.status(500).json({ message: 'failed to fetch user' });
+    }
+    catch (error: any) {
+        res.status(500).json({ message: error.message });
     }
 });
-
 
 // get a single event by id.
 

@@ -26,15 +26,16 @@ function EventCreatePage() {
     const handleSubmit = async (event: FormEvent) => {
         event.preventDefault();
         try {
-            const data = await createEvent(eventNew);
-            return data
+            console.log(eventNew)
+            await createEvent(eventNew);
+            window.location.assign('/calendar')
         } catch (err) {
           console.error('Failed to create event', err);
         }
       };
 
       const ReturnHome = () => {
-        window.location.assign('/event')
+        window.location.assign('/calendar')
       }
 
     return (
@@ -94,7 +95,7 @@ function EventCreatePage() {
                 </div>
                 <div className='form-group'>
                   <button className='btn btn-primary' type='submit'>
-                    Update
+                    Create
                   </button>
                 </div>
               </form>

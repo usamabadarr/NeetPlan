@@ -86,10 +86,10 @@ export const getAllEvents = async () => {
 }
 
 
-// get today's events function. Returns array of all event data from logged-in user for which the 'date' is today.
-export const getTodayEvents = async () => {
+// get all events for a specific day function. Returns array of all event data from logged-in user for which the 'date' is today.
+export const getDayEvents = async (id: string) => {
     try {
-        const response = await fetch('/api/event/today',
+        const response = await fetch(`/api/event/day/${id}`,
         {method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
