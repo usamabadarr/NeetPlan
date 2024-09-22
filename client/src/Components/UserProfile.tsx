@@ -1,19 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 type UserProfileProps = {
-  user: {
-    username: string;
-    location: string;
-    profilePicture: string;
+  user: string
   };
-};
 
 const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
+
+  const [time, setTime] = useState<string>("Morning")
+
+  useEffect(()=>{
+    const time = new Date(Date.now()).getHours()
+    if (time >= 0 && time < 12) {
+      setTime("Morning")
+    }
+    else if (time >= 12 && time <18) {
+      setTime("Afternoon")
+    }
+    else {setTime("Evening")}
+
+  },[])
+
   return (
     <div className="user-profile">
-      <img src={user.profilePicture} alt={`${user.username}'s Profile`} />
-      <h3>{user.username}</h3>
-      <p>Location: {user.location}</p>
+    <h3>{user? (`Good ${time}, ${user}`): (`Good ${time}`)}</h3>
     </div>
   );
 };
