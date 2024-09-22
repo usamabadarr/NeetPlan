@@ -18,7 +18,7 @@ const Navbar = () => {
 
     return (
         <nav className = 'nav'>
-            <h1>Daily Planner</h1>;
+            <h1>Daily Planner</h1>
             {loginCheck? (
                 <ul>
                     <li className = 'nav-item'>
@@ -29,7 +29,19 @@ const Navbar = () => {
 
                     <li className = 'nav-item'>
                         <button>
-                            <Link to = '/event'>Events</Link>
+                            <Link to = '/calendar'>Calendar</Link>
+                        </button>
+                    </li>
+
+                    <li className = 'nav-item'>
+                        <button>
+                            <Link to = '/event-create'>Create New Event</Link>
+                        </button>
+                    </li>
+
+                    <li className = 'nav-item'>
+                        <button>
+                            <Link to = '/all'>View All Events</Link>
                         </button>
                     </li>
 
@@ -38,34 +50,14 @@ const Navbar = () => {
                             <Link to = '/user'>User Settings</Link>
                         </button>
                     </li>
-
+                    
                     <li className = 'nav-item'>
                         <button onClick={auth.logout}>
                             <Link to=''>Logout</Link>
                         </button>
                     </li>
                 </ul>
-            ) : (
-                <ul>
-                    <li className = 'nav-item'>
-                        <button>
-                            <Link to = '/about'>About</Link>
-                        </button>
-                    </li>
-
-                    <li className = 'nav-item'>
-                        <button>
-                            <Link to = '/login'>Login</Link>
-                        </button>
-                    </li>
-
-                    <li className = 'nav-item'>
-                        <button>
-                            <Link to = '/signup'>Sign Up</Link>
-                        </button>
-                    </li>
-                </ul>
-            )}
+            ) : (<></>)}
         </nav>
     )
 }

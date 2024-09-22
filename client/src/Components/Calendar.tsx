@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Table, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaRegCircle } from 'react-icons/fa'; 
-import './Calendar.css'; 
+import '../Index.css'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { getAllEvents } from '../api/eventAPI';
+import { EventData } from '../interfaces/EventData';
 
 interface Holiday {
   date: Date;
@@ -74,14 +75,23 @@ for (let i = 0; i < holidayData.length; i++) {
   holidays.push(holiday);
 }
 
-console.log(holidays);
-  
-;
 
 const Calendar: React.FC = () => {
   const [currentDate, setCurrentDate] = useState<Date>(new Date());
   const [notes, setNotes] = useState<Record<string, string>>({});
   const today = new Date();
+
+  const [events, setEvents] = useState<EventData[]>([])
+
+  const getEvents = async () => {
+    const array = await getAllEvents()
+    if (array) {
+    setEvents(array)}
+  }
+
+  useEffect(()=> {getEvents()},[]
+  )
+
 
   useEffect(() => {
     const storedNotes = localStorage.getItem('calendarNotes');
@@ -123,14 +133,24 @@ const Calendar: React.FC = () => {
     setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + direction));
   };
 
+  // const formatDate = (year: number, month: number, day: number) => {
+  //   return `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+  // };
+
   const formatDate = (year: number, month: number, day: number) => {
-    return `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+    return `${month + 1}-${day}-${year}`;
   };
 
   const calendarDays = generateCalendarDays();
   const rows = [];
   for (let i = 0; i < calendarDays.length; i += 7) {
     rows.push(calendarDays.slice(i, i + 7));
+  }
+
+
+  const isEvent = (array: EventData[], date: string) => {
+    return array.find((element) => element.date === date.split('-').join('/'))
+
   }
 
   return (
@@ -166,15 +186,15 @@ const Calendar: React.FC = () => {
                         {day !== null && (
                           <>
                             <div className={`day ${isHoliday(currentDateObject) ? 'holiday' : ''}`}>
-                              {day}
+                              {isEvent(events, formattedDate)? (<Link to={`/events/${formattedDate}`}>{day}</Link>):(<div>{day}</div>)}
                               {isToday(day) && <FaRegCircle className="-icon" style={{ color: 'red', marginLeft: '5px' }} />}
                               {isHoliday(currentDateObject) && <span className="holiday-name">{getHolidayName(currentDateObject)}</span>}
                             </div>
-                            {notes[formattedDate] && (
+                            {/* {notes[formattedDate] && (
                               <Link to={`/NotePage/${formattedDate}`}>
                                 <Button variant="primary">View Notes</Button>
                               </Link>
-                            )}
+                            )} */}
                           </>
                         )}
                       </td>
