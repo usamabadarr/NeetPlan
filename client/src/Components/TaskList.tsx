@@ -16,10 +16,10 @@ function TodayEvents() {
 
   }
 
-  useEffect(()=>{if () {
-      const id = (new Date(Date.now())).toLocaleDateString()
+  useEffect(()=>{
+      const id = (new Date(Date.now())).toLocaleDateString().split('/').join('-')
       fetchEvents(id)
-  }}, []
+  }, []
   )
 
 
