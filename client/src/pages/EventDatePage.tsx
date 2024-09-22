@@ -29,7 +29,7 @@ function EventDatePage() {
             <p className="error-p">There are saved events for this day.</p>
             : (<table className="table">
               <thead><tr>
-                  <th>Name</th>
+                  <th>Event Name</th>
                   <th>Date</th>
                   <th>Start Time</th>
                   <th>End Time</th>

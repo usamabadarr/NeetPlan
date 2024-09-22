@@ -1,6 +1,7 @@
 import { createEvent} from "../api/eventAPI"
 import { useState, ChangeEvent, FormEvent } from "react";
 import { EventData } from "../interfaces/EventData";
+import { Link } from "react-router-dom";
 
 function EventCreatePage() {
 
@@ -14,7 +15,7 @@ function EventCreatePage() {
     )
 
     const handleChange = (
-        event: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+        event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
       ) => {
         const { name, value } = event.target;
         setEventNew({
@@ -34,17 +35,13 @@ function EventCreatePage() {
         }
       };
 
-      const ReturnHome = () => {
-        window.location.assign('/calendar')
-      }
-
     return (
         <>
             <div className='form-container'>
               <form className='form login-form' onSubmit={handleSubmit}>
                 <h1>Event details</h1>
                 <div className='form-group'>
-                  <label>Name</label>
+                  <label>Event Name</label>
                   <input
                     className='form-input'
                     type='text'
@@ -55,6 +52,7 @@ function EventCreatePage() {
                 </div>
                 <div className='form-group'>
                   <label>Date</label>
+                  <p>*Please use m/d/yyyy format!</p>
                   <input
                     className='form-input'
                     type='text'
@@ -85,9 +83,8 @@ function EventCreatePage() {
                 </div>
                 <div className='form-group'>
                   <label>Notes</label>
-                  <input
+                  <textarea
                     className='form-input'
-                    type='text'
                     name='notes'
                     value={eventNew.notes || ''}
                     onChange={handleChange}
@@ -100,7 +97,7 @@ function EventCreatePage() {
                 </div>
               </form>
               <div>
-                <button className="btn" onClick={ReturnHome}>Cancel</button>
+                <button className="btn"><Link to="/all">Cancel</Link></button>
               </div>
             </div>
         </>
