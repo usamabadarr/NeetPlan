@@ -1,7 +1,8 @@
-import { signUp } from "../api/authAPI"
-import { useState, ChangeEvent, FormEvent } from "react";
+import { signUp, getUsers } from "../api/authAPI"
+import { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import auth from "../utils/auth";
 import { Link } from "react-router-dom";
+import { UserData } from "../interfaces/UserData";
 
 const SignupPage = () => {
     const [signupData, setSignupData] = useState({
@@ -11,6 +12,10 @@ const SignupPage = () => {
       location: ''
     });
   
+    const [errormsg, setErrormsg] = useState('')
+
+    const [users, setUsers] = useState<UserData[]>([])
+
     const handleChange = (
       event: ChangeEvent<HTMLInputElement | HTMLSelectElement>
     ) => {
@@ -20,9 +25,29 @@ const SignupPage = () => {
         [name]: value,
       });
     };
-  
+
+    const fetchUsers = async () => {
+      const array = await getUsers()
+      setUsers(array)
+    }
+
+    useEffect(()=> {fetchUsers()},[])
+
     const handleSubmit = async (event: FormEvent) => {
       event.preventDefault();
+      console.log(users)
+      if (signupData.email === '' || signupData.password === '') {
+        setErrormsg('An email and password are required')
+        return
+      }
+      else if (users.length>0 && users.findIndex((element) => (element?.email === signupData.email)) !== -1) {
+        setErrormsg('This email is already signed up')
+        return
+      }
+      else if (signupData.password.length < 8 || signupData.password.length > 20) {
+        setErrormsg('Passwords should be between 8 and 20 characters')
+        return
+      }
       try {
         const data = await signUp(signupData);
         auth.login(data.token);
@@ -37,6 +62,7 @@ const SignupPage = () => {
           <h1>Signup</h1>
           <div className='form-group'>
             <label>Email</label>
+            <p className="form-req">*Required.</p>
             <input
               className='form-input'
               type='email'
@@ -47,6 +73,7 @@ const SignupPage = () => {
           </div>
           <div className='form-group'>
             <label>Password</label>
+            <p className="form-req">*Required.</p>
             <input
               className='form-input'
               type='password'
@@ -57,7 +84,6 @@ const SignupPage = () => {
           </div>
           <div className='form-group'>
             <label>Name</label>
-            <p className='optional'> *optional</p>
             <input
               className='form-input'
               type='text'
@@ -68,7 +94,6 @@ const SignupPage = () => {
           </div>
           <div className='form-group'>
             <label>Zip Code</label>
-            <p className='optional'> *optional.</p>
             <input
               className='form-input'
               type='text'
@@ -81,11 +106,14 @@ const SignupPage = () => {
             <button className='btn btn-primary' type='submit'>
               Signup
             </button>
-            <button className='btn btn-primary' type='submit'>
-              <Link to="/">Back</Link>
-            </button>
+            <>
+              {errormsg? (<p className="form-error">{errormsg}</p>): (<></>)}
+            </>
           </div>
         </form>
+        <button className='btn btn-primary' type='submit'>
+              <Link to="/">Back</Link>
+        </button>
       </div>
     );
   };

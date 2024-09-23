@@ -14,6 +14,8 @@ function EventCreatePage() {
         }
     )
 
+    const [errormsg, setErrormsg] = useState('')
+
     const handleChange = (
         event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
       ) => {
@@ -27,7 +29,10 @@ function EventCreatePage() {
     const handleSubmit = async (event: FormEvent) => {
         event.preventDefault();
         try {
-            console.log(eventNew)
+            if (eventNew.name === '' || eventNew.date === '') {
+              setErrormsg('An event name and date are required')
+              return
+            }
             await createEvent(eventNew);
             window.location.assign('/calendar')
         } catch (err) {
@@ -42,6 +47,7 @@ function EventCreatePage() {
                 <h1>Event details</h1>
                 <div className='form-group'>
                   <label>Event Name</label>
+                  <p className="form-req">*Required.</p>
                   <input
                     className='form-input'
                     type='text'
@@ -52,7 +58,7 @@ function EventCreatePage() {
                 </div>
                 <div className='form-group'>
                   <label>Date</label>
-                  <p>*Please use m/d/yyyy format!</p>
+                  <p className="form-req">*Required. Please use mm/dd/yyyy format.</p>
                   <input
                     className='form-input'
                     type='text'
@@ -95,9 +101,12 @@ function EventCreatePage() {
                     Create
                   </button>
                 </div>
+                  <>
+                    {errormsg? (<p className="form-error">{errormsg}</p>): (<></>)}
+                  </>
               </form>
               <div>
-                <button className="btn"><Link to="/all">Cancel</Link></button>
+                <button className="btn"><Link to="/calendar">Cancel</Link></button>
               </div>
             </div>
         </>

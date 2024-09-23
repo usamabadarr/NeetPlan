@@ -57,7 +57,7 @@ function App() {
         </section>
 
         <section id="weather">
-          <h2>Current Weather</h2>
+          <h2>Weather</h2>
           <WeatherWidget weather={weather} />
         </section>
 

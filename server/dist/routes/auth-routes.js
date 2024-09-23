@@ -34,4 +34,20 @@ router.post('/login', async (req, res) => {
     const token = jwt.sign({ email: user.email, location: user.location, name: user.name }, secretKey, { expiresIn: '1d' });
     return res.status(200).json({ token: token });
 });
+router.get('/users', async (_req, res) => {
+    try {
+        const users = await User.findAll({
+            attributes: { exclude: ['password', 'location', 'id', 'name'] }
+        });
+        if (users) {
+            res.status(200).json(users);
+        }
+        else {
+            res.json([]);
+        }
+    }
+    catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
 export default router;

@@ -44,4 +44,16 @@ router.post('/login', async (req: Request, res: Response) => {
 })
 
 
+router.get('/users', async (_req: Request, res: Response) => {
+    try {
+    const users = await User.findAll({
+        attributes: {exclude: ['password', 'location', 'id', 'name']}
+    })
+    if (users) {res.status(200).json(users)}
+    else {res.json([])}
+    } catch (error: any) {
+        res.status(500).json({message: error.message})
+    }
+})
+
 export default router
