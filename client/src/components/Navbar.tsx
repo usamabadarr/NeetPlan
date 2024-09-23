@@ -17,55 +17,29 @@ const Navbar = () => {
     }, []);
 
     return (
-        <nav className = 'nav'>
-            <h1>Daily Planner</h1>
-            {loginCheck? (
-                <ul>
-                    <li className = 'nav-item'>
-                            <Link to = '/'>Home</Link>
-                    </li>
-
-                    <li className = 'nav-item'>
-                            <Link to = '/calendar'>Calendar</Link>
-                    </li>
-
-                    <li className = 'nav-item'>
-                            <Link to = '/event-create'>Create New Event</Link>
-                    </li>
-
-                    <li className = 'nav-item'>
-                            <Link to = '/all'>View All Events</Link>
-                    </li>
-
-                    <li className = 'nav-item'>
-                            <Link to = '/user'>User Settings</Link>
-                    </li>
-                    
-                    <li className = 'nav-item'>
-                            <Link to='' onClick={auth.logout}>Logout</Link>
-                    </li>
-                </ul>
-            ) : (
-            <>
-                <ul>
-                    <li className = 'nav-item'>
-                            <Link to = '/'>Home</Link>
-                    </li>
-
-                    <li className = 'nav-item'>
-                            <Link to = '/about'>About</Link>
-                    </li>
-                    
-                    <li className = 'nav-item'>
-                            <Link to='/login'>Login</Link>
-                    </li>
-
-                    <li className = 'nav-item'>
-                            <Link to = '/signup'>Sign Up</Link>
-                    </li>
-                </ul>
-            </>)}
-        </nav>
+        <header>
+                <h1>Daily Planner</h1>
+                <nav className = 'nav'>
+                    {loginCheck? (
+                        <ul>
+                                <Link to = '/'><li className = 'nav-item'>Home</li></Link>
+                                <Link to = '/calendar'><li className = 'nav-item'>Calendar</li></Link>
+                                <Link to = '/event-create'><li className = 'nav-item'>Create New Event</li></Link> 
+                                <Link to = '/all'><li className = 'nav-item'>View All Events</li></Link>
+                                <Link to = '/user'><li className = 'nav-item'>User Settings</li></Link>      
+                                <Link to='' onClick={auth.logout}><li className = 'nav-item'>Logout</li></Link>
+                        </ul>
+                    ) : (
+                    <>
+                        <ul>
+                                <Link to = '/'><li className = 'nav-item'>Home</li></Link>
+                                <Link to = '/about'><li className = 'nav-item'>About</li></Link>  
+                                <Link to='/login'><li className = 'nav-item'>Login</li></Link>
+                                <Link to = '/signup'><li className = 'nav-item'>Sign Up</li></Link>
+                        </ul>
+                    </>)}
+                </nav>
+        </header>
     )
 }
 

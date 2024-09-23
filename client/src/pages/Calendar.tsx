@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Table, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { FaRegCircle } from 'react-icons/fa'; 
+// import { FaRegCircle } from 'react-icons/fa'; 
 import '../Index.css'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { getAllEvents } from '../api/eventAPI';
@@ -185,12 +185,12 @@ const Calendar: React.FC = () => {
                       <td key={dayIndex} className="text-center">
                         {day !== null && (
                           <>
-                            <div className={`day ${isHoliday(currentDateObject) ? 'holiday' : ''}`}>
+                            <div className={`day ${isHoliday(currentDateObject) ? 'holiday' : ''} ${isToday(day) ? 'today' : ''}`}>
                               <div>{day}</div>
                               {isEvent(events, formattedDate) > 1? (<Link to={`/events/${formattedDate}`}>{isEvent(events, formattedDate)} events scheduled</Link>)
                               :isEvent(events, formattedDate) === 1? (<Link to={`/events/${formattedDate}`}>{isEvent(events, formattedDate)} event scheduled</Link>)
                               :(<></>)}
-                              {isToday(day) && <FaRegCircle className="-icon" style={{ color: 'red', marginLeft: '5px' }} />}
+                              {/* {isToday(day) && <FaRegCircle className="-icon" style={{ color: 'red', marginLeft: '5px' }} />} */}
                               {isHoliday(currentDateObject) && <span className="holiday-name">{getHolidayName(currentDateObject)}</span>}
                             </div>
                             {/* {notes[formattedDate] && (
