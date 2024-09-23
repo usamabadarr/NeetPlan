@@ -13,7 +13,7 @@ import EventEditPage from './pages/EventEditPage.tsx';
 import EventCreatePage from './pages/EventCreatePage.tsx';
 import DeleteConfirmPage from './pages/DeleteConfirmPage.tsx';
 import AboutPage from './pages/AboutPage.tsx';
-import Calendar from './components/Calendar.tsx';
+import Calendar from './pages/Calendar.tsx';
 import EventDatePage from './pages/EventDatePage.tsx';
 import AllEventPage from './pages/AllEventPage.tsx';
 
