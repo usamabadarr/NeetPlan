@@ -149,7 +149,7 @@ const Calendar: React.FC = () => {
 
 
   const isEvent = (array: EventData[], date: string) => {
-    return array.find((element) => element.date === date.split('-').join('/'))
+    return array.filter((element) => element.date === date.split('-').join('/')).length
 
   }
 
@@ -186,7 +186,10 @@ const Calendar: React.FC = () => {
                         {day !== null && (
                           <>
                             <div className={`day ${isHoliday(currentDateObject) ? 'holiday' : ''}`}>
-                              {isEvent(events, formattedDate)? (<Link to={`/events/${formattedDate}`}>{day}</Link>):(<div>{day}</div>)}
+                              <div>{day}</div>
+                              {isEvent(events, formattedDate) > 1? (<Link to={`/events/${formattedDate}`}>{isEvent(events, formattedDate)} events scheduled</Link>)
+                              :isEvent(events, formattedDate) === 1? (<Link to={`/events/${formattedDate}`}>{isEvent(events, formattedDate)} event scheduled</Link>)
+                              :(<></>)}
                               {isToday(day) && <FaRegCircle className="-icon" style={{ color: 'red', marginLeft: '5px' }} />}
                               {isHoliday(currentDateObject) && <span className="holiday-name">{getHolidayName(currentDateObject)}</span>}
                             </div>
