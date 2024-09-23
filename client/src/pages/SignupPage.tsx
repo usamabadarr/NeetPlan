@@ -63,6 +63,7 @@ const SignupPage = () => {
           <div className='form-group'>
             <label>Email</label>
             <p className="form-req">*Required.</p>
+            <label>Email:</label>
             <input
               className='form-input'
               type='email'
@@ -74,6 +75,7 @@ const SignupPage = () => {
           <div className='form-group'>
             <label>Password</label>
             <p className="form-req">*Required.</p>
+            <label>Password:</label>
             <input
               className='form-input'
               type='password'
@@ -84,6 +86,8 @@ const SignupPage = () => {
           </div>
           <div className='form-group'>
             <label>Name</label>
+            <label>Name:</label>
+            <p className='optional'> *optional</p>
             <input
               className='form-input'
               type='text'
@@ -94,6 +98,8 @@ const SignupPage = () => {
           </div>
           <div className='form-group'>
             <label>Zip Code</label>
+            <label>Zip Code:</label>
+            <p className='optional'> *optional.</p>
             <input
               className='form-input'
               type='text'
@@ -104,11 +110,15 @@ const SignupPage = () => {
           </div>
           <div className='form-group'>
             <button className='btn btn-primary' type='submit'>
-              Signup
+              <Link to="/">Back</Link>
             </button>
             <>
               {errormsg? (<p className="form-error">{errormsg}</p>): (<></>)}
             </>
+            &nbsp;
+            <button className='btn btn-primary' type='submit'>
+              Signup
+            </button>
           </div>
         </form>
         <button className='btn btn-primary' type='submit'>

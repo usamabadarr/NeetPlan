@@ -57,7 +57,34 @@ const Navbar = () => {
                         </button>
                     </li>
                 </ul>
-            ) : (<></>)}
+            ) : (
+            <>
+                <ul>
+                    <li className = 'nav-item'>
+                        <button>
+                            <Link to = '/'>Home</Link>
+                        </button>
+                    </li>
+
+                    <li className = 'nav-item'>
+                        <button>
+                            <Link to = '/about'>About</Link>
+                        </button>
+                    </li>
+                    
+                    <li className = 'nav-item'>
+                        <button>
+                            <Link to='/login'>Login</Link>
+                        </button>
+                    </li>
+
+                    <li className = 'nav-item'>
+                        <button>
+                            <Link to = '/signup'>Sign Up</Link>
+                        </button>
+                    </li>
+                </ul>
+            </>)}
         </nav>
     )
 }
