@@ -37,9 +37,11 @@ function App() {
 
 
   const getWeather = async() => {
-    const weatherData = await fetchWeather();
-    if (weatherData.temp && weatherData.weather && weatherData.location) {
-      setWeather({temp: weatherData.temp, weather: weatherData.weather, location: weatherData.location})
+    if (auth.getProfile().location) {
+      const weatherData = await fetchWeather();
+      if (weatherData.temp && weatherData.weather && weatherData.location) {
+        setWeather({temp: weatherData.temp, weather: weatherData.weather, location: weatherData.location})
+      }
     }
   }
 
