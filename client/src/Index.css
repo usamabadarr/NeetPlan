@@ -397,3 +397,32 @@ button:hover {
 
 
 /* About Page Styles */
+
+.aboutTitle {
+  padding: 0;
+}
+
+.contact-form div {
+  padding: 10px;
+}
+
+.contact-form div label{
+  padding-right: 10px;
+}
+
+.contact-form div input, textarea{
+  background-color: white;
+  color: black;
+}
+
+.contact-form div .form-input-message {
+  
+}
+
+.contact-form div .submitButton {
+  width: 100px;
+}
+
+.contact-form {
+  padding-bottom: 80px;
+}
