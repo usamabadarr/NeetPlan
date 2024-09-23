@@ -43,3 +43,21 @@ export const login = async (email: string, password: string) => {
         return Promise.reject('Error: Could not log in')
     }
 }
+
+export const getUsers = async () => {
+    try {
+        const response = await fetch('/auth/users', {
+            method: 'Get',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+
+        if (!response.ok) {throw new Error('Invalid API response')}
+
+        return await response.json()
+        
+    } catch (error) {
+        return Promise.reject('Error: Could not create user')
+    }
+}

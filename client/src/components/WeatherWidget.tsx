@@ -11,14 +11,14 @@ type WeatherProps = {
 const WeatherWidget: React.FC<WeatherProps> = ({ weather }) => {
   return (
     <div className="weather-widget">
-      <h3>Current Weather for {weather.location}</h3>
-      {weather ? (
+      {weather.temp ? (
         <>
+          <h3>Current Weather for {weather.location}</h3>
           <p>Temperature: {weather.temp}</p>
           <p>Description: {weather.weather}</p>
         </>
       ) : (
-        <p>Weather data unavailable</p>
+        <p>Add a US zipcode to your profile to get weather data!</p>
       )}
     </div>
   );

@@ -37,9 +37,11 @@ function App() {
 
 
   const getWeather = async() => {
-    const weatherData = await fetchWeather();
-    if (weatherData.temp && weatherData.weather && weatherData.location) {
-      setWeather({temp: weatherData.temp, weather: weatherData.weather, location: weatherData.location})
+    if (auth.getProfile().location) {
+      const weatherData = await fetchWeather();
+      if (weatherData.temp && weatherData.weather && weatherData.location) {
+        setWeather({temp: weatherData.temp, weather: weatherData.weather, location: weatherData.location})
+      }
     }
   }
 
@@ -57,7 +59,7 @@ function App() {
         </section>
 
         <section id="weather">
-          <h2>Current Weather</h2>
+          <h2>Weather</h2>
           <WeatherWidget weather={weather} />
         </section>
 

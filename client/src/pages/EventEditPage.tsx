@@ -18,6 +18,8 @@ function EventEditPage() {
         }
     )
 
+    const [errormsg, setErrormsg] = useState('')
+
     const fetchEvent = async() => {
         if (id) {
         const data: EventData = await getSingleEvent(id)
@@ -41,10 +43,14 @@ function EventEditPage() {
     const handleSubmit = async (event: FormEvent) => {
         event.preventDefault();
         try {
-            if (id) {
-                const data = await updateEvent(eventUpdate, id);
-                return data
-            }
+          if (eventUpdate.name === '' || eventUpdate.date === '') {
+            setErrormsg('An event name and date are required')
+            return
+          }
+          if (id) {
+              await updateEvent(eventUpdate, id);
+              window.location.assign('/calendar')
+          }
         } catch (err) {
           console.error('Failed to edit event', err);
         }
@@ -53,7 +59,7 @@ function EventEditPage() {
     const deleteThis = () => {
       if (id) {
       deleteEvent(id)
-      window.location.assign('/all')
+      window.location.assign('/calendar')
       }
     }
 
@@ -64,6 +70,7 @@ function EventEditPage() {
                 <h1>Event details</h1>
                 <div className='form-group'>
                   <label>Event Name</label>
+                  <p className="form-req">*Required.</p>
                   <input
                     className='form-input'
                     type='text'
@@ -74,7 +81,7 @@ function EventEditPage() {
                 </div>
                 <div className='form-group'>
                   <label>Date</label>
-                  <p>*Please use m/d/yyyy format!</p>
+                  <p className="form-req">*Required. Please use mm/dd/yyyy format.</p>
                   <input
                     className='form-input'
                     type='text'
@@ -117,9 +124,12 @@ function EventEditPage() {
                     Update
                   </button>
                 </div>
+                <>
+                    {errormsg? (<p className="form-error">{errormsg}</p>): (<></>)}
+                </>
               </form>
               <div>
-                <button className="btn"><Link to="/all">Cancel</Link></button>
+                <button className="btn"><Link to="/calendar">Cancel</Link></button>
                 <button className="btn btn-delete" onClick={deleteThis}>Delete</button>
               </div>
             </div>
