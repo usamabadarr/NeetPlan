@@ -22,66 +22,46 @@ const Navbar = () => {
             {loginCheck? (
                 <ul>
                     <li className = 'nav-item'>
-                        <button>
                             <Link to = '/'>Home</Link>
-                        </button>
                     </li>
 
                     <li className = 'nav-item'>
-                        <button>
                             <Link to = '/calendar'>Calendar</Link>
-                        </button>
                     </li>
 
                     <li className = 'nav-item'>
-                        <button>
                             <Link to = '/event-create'>Create New Event</Link>
-                        </button>
                     </li>
 
                     <li className = 'nav-item'>
-                        <button>
                             <Link to = '/all'>View All Events</Link>
-                        </button>
                     </li>
 
                     <li className = 'nav-item'>
-                        <button>
                             <Link to = '/user'>User Settings</Link>
-                        </button>
                     </li>
                     
                     <li className = 'nav-item'>
-                        <button onClick={auth.logout}>
-                            <Link to=''>Logout</Link>
-                        </button>
+                            <Link to='' onClick={auth.logout}>Logout</Link>
                     </li>
                 </ul>
             ) : (
             <>
                 <ul>
                     <li className = 'nav-item'>
-                        <button>
                             <Link to = '/'>Home</Link>
-                        </button>
                     </li>
 
                     <li className = 'nav-item'>
-                        <button>
                             <Link to = '/about'>About</Link>
-                        </button>
                     </li>
                     
                     <li className = 'nav-item'>
-                        <button>
                             <Link to='/login'>Login</Link>
-                        </button>
                     </li>
 
                     <li className = 'nav-item'>
-                        <button>
                             <Link to = '/signup'>Sign Up</Link>
-                        </button>
                     </li>
                 </ul>
             </>)}

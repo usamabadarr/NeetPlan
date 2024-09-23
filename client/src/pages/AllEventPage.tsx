@@ -24,7 +24,7 @@ function AllEventPage() {
     return (
         <>
           {(events.length < 1)? 
-            <p className="error-p">There are saved events for this day.</p>
+            <p className="error-p">You have no saved events.</p>
             : (<table className="table">
               <thead><tr>
                   <th>Event Name</th>
