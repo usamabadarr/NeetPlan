@@ -36,7 +36,7 @@ const LoginPage = () => {
         <form className='form login-form' onSubmit={handleSubmit}>
           <h1>Login</h1>
           <div className='form-group'>
-            <label>Email</label>
+            <label>Email:</label>
             <input
               className='form-input'
               type='email'
@@ -46,7 +46,7 @@ const LoginPage = () => {
             />
           </div>
           <div className='form-group'>
-            <label>Password</label>
+            <label>Password:</label>
             <input
               className='form-input'
               type='password'
@@ -56,11 +56,12 @@ const LoginPage = () => {
             />
           </div>
           <div className='form-group'>
-            <button className='btn btn-primary' type='submit'>
-              Login
-            </button>
-            <button className='btn btn-primary' type='submit'>
+            <button className='btn btn-primary loginButton' type='submit'>
               <Link to="/">Back</Link>
+            </button>
+            &nbsp;
+            <button className='btn btn-primary loginButton' type='submit'>
+              Login
             </button>
           </div>
         </form>
