@@ -36,7 +36,7 @@ const SignupPage = () => {
         <form className='form login-form' onSubmit={handleSubmit}>
           <h1>Signup</h1>
           <div className='form-group'>
-            <label>Email</label>
+            <label>Email:</label>
             <input
               className='form-input'
               type='email'
@@ -46,7 +46,7 @@ const SignupPage = () => {
             />
           </div>
           <div className='form-group'>
-            <label>Password</label>
+            <label>Password:</label>
             <input
               className='form-input'
               type='password'
@@ -56,7 +56,7 @@ const SignupPage = () => {
             />
           </div>
           <div className='form-group'>
-            <label>Name</label>
+            <label>Name:</label>
             <p className='optional'> *optional</p>
             <input
               className='form-input'
@@ -67,7 +67,7 @@ const SignupPage = () => {
             />
           </div>
           <div className='form-group'>
-            <label>Zip Code</label>
+            <label>Zip Code:</label>
             <p className='optional'> *optional.</p>
             <input
               className='form-input'
@@ -79,10 +79,11 @@ const SignupPage = () => {
           </div>
           <div className='form-group'>
             <button className='btn btn-primary' type='submit'>
-              Signup
-            </button>
-            <button className='btn btn-primary' type='submit'>
               <Link to="/">Back</Link>
+            </button>
+            &nbsp;
+            <button className='btn btn-primary' type='submit'>
+              Signup
             </button>
           </div>
         </form>

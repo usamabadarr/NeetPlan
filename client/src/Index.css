@@ -59,6 +59,10 @@ a:hover {
   color: #1d70b8;
 }
 
+
+
+
+
 /* Layout */
 .App {
   display: flex;
@@ -74,6 +78,11 @@ header {
   font-size: 1.2rem;
 }
 
+
+
+
+
+/* Nav Styles */
 nav {
   padding-bottom: 50px;
   border-bottom: 1px solid #e0e0e0;
@@ -106,6 +115,10 @@ nav ul li a:hover {
   background-color: #0056b3;
 }
 
+
+
+
+
 /* Section Styles */
 section {
   margin: 20px auto;
@@ -115,6 +128,8 @@ section {
   box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
+
+
 
 
 
@@ -154,6 +169,10 @@ section {
   margin-bottom: 20px;
 }
 
+
+
+
+
 /* Reminders */
 .reminders ul li {
   margin: 10px 0;
@@ -167,6 +186,10 @@ section {
 .reminders ul li:hover {
   background-color: #d6e9ff;
 }
+
+
+
+
 
 /* Footer */
 footer {
@@ -184,6 +207,10 @@ footer {
 footer p {
   margin: 0;
 }
+
+
+
+
 
 /* Calendar */
 table {
@@ -231,6 +258,10 @@ td:hover {
   display: block;
 }
 
+
+
+
+
 /* Hover Overlay Effect */
 .hover-overlay {
   position: relative;
@@ -257,6 +288,10 @@ td:hover {
   position: relative;
   z-index: 2;
 }
+
+
+
+
 
 /* Scrollable Content */
 .scroll-container {
@@ -289,6 +324,11 @@ button:hover {
   background-color: #0056b3;
 }
 
+
+
+
+
+/* Notes Styles */
 .Notes-button {
   position: absolute;
   top: 10px;
@@ -305,15 +345,54 @@ button:hover {
   background-color: #0056b3;
 }
 
-.login-notice h2{
-  text-decoration: none;
-}
+
+
+
+
+/* Landing Page Syles */
 
 .login-notice a {
   text-decoration: none;
 }
 
-main {
-  width: 100%;
-  min-height: 100vh;
+
+
+
+
+/* Login Page Styles */
+.login-form div {
+  padding: 10px;
 }
+
+.login-form div label{
+  padding-right: 10px;
+}
+
+.login-form div input{
+  background-color: white;
+  color: black;
+}
+
+.login-form div .loginButton {
+  width: 100px;
+}
+
+.login-form div button a{
+  color: white;
+  text-decoration: none;
+}
+
+
+
+
+
+/* Sign Up Page Styles */
+.optional {
+  font-style: italic;
+}
+
+
+
+
+
+/* About Page Styles */
