@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 
 import fetchWeather from '../api/weatherAPI';
-import UserProfile from '../components/UserProfile';
-import TaskList from '../components/TaskList';
-import WeatherWidget from '../components/WeatherWidget';
+import UserProfile from '../temp/UserProfile';
+import TaskList from '../temp/TaskList';
+import WeatherWidget from '../temp/WeatherWidget';
 // import Reminders from '../components/Reminders';
 import auth from '../utils/auth';
 
