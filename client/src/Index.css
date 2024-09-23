@@ -1,3 +1,16 @@
+:root {
+  font-family: 'Inter Tight', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 /* General Styles */
 body {
   font-family: 'Inter', sans-serif;
@@ -6,6 +19,12 @@ body {
   background-color: #f0f4f8;
   color: #333;
   line-height: 1.6;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat no-repeat;
+  background-position: center center;
 }
 
 h1, h2, h3 {
@@ -23,7 +42,6 @@ ul {
 
 li {
   padding: 10px 20px;
-  border-bottom: 1px solid #e0e0e0;
   transition: background-color 0.3s ease;
 }
 
@@ -56,18 +74,29 @@ header {
   font-size: 1.2rem;
 }
 
+nav {
+  padding-bottom: 50px;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: rgb(105, 102, 102);
+}
+
 nav ul {
   display: flex;
-  justify-content: center;
+  justify-content: right;
   padding: 0;
   margin: 0;
+  right: 0;
+  position: absolute;
+}
+
+nav h1 {
+  color: white;
 }
 
 nav ul li a {
   padding: 10px 20px;
   margin: 0 10px;
   background-color: #007bff;
-  border-radius: 5px;
   color: white;
   font-weight: 500;
   transition: background-color 0.3s ease;
@@ -87,13 +116,7 @@ section {
   border-radius: 10px;
 }
 
-h2 {
-  border-bottom: 3px solid #007bff;
-  padding-bottom: 15px;
-  margin-bottom: 25px;
-  color: #333;
-  font-size: 1.5rem;
-}
+
 
 /* Task List */
 .completed {
@@ -153,6 +176,9 @@ footer {
   padding: 15px;
   margin-top: auto;
   font-size: 0.9rem;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
 }
 
 footer p {
@@ -279,4 +305,15 @@ button:hover {
   background-color: #0056b3;
 }
 
+.login-notice h2{
+  text-decoration: none;
+}
 
+.login-notice a {
+  text-decoration: none;
+}
+
+main {
+  width: 100%;
+  min-height: 100vh;
+}
