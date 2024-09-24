@@ -27,28 +27,31 @@ function EventDatePage() {
         <>
           {(events.length < 1)? 
             <p className="error-p">There are saved events for this day.</p>
-            : (<table className="table">
-              <thead><tr>
-                  <th>Event Name</th>
-                  <th>Date</th>
-                  <th>Start Time</th>
-                  <th>End Time</th>
-                  <th>Notes</th>
-                </tr>
-              </thead>
-              <tbody>
-              {events.map((event) =>(
-                <tr key={event.id}>
-                  <td><p>{event.name}</p></td>
-                  <td>{event.date}</td>
-                  <td>{event.startTime}</td>
-                  <td>{event.endTime}</td>
-                  <td>{event.notes}</td>
-                  <td><Link to={`/event-edit/${event.id}`}><button>Edit Event</button></Link></td>
-                </tr>
-              ))}
-              </tbody>
-            </table>)}
+            : (<div className="table-container">
+                <table className="table">
+                  <thead><tr>
+                      <th>Event Name</th>
+                      <th>Date</th>
+                      <th>Start Time</th>
+                      <th>End Time</th>
+                      <th>Notes</th>
+                      <th>Edit</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {events.map((event) =>(
+                    <tr key={event.id}>
+                      <td><p>{event.name}</p></td>
+                      <td>{event.date}</td>
+                      <td>{event.startTime}</td>
+                      <td>{event.endTime}</td>
+                      <td>{event.notes}</td>
+                      <td><Link to={`/event-edit/${event.id}`}><button>Edit Event</button></Link></td>
+                    </tr>
+                  ))}
+                  </tbody>
+                </table>
+          </div>)}
         </>
     )
 }

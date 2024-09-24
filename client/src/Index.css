@@ -78,7 +78,21 @@ header {
   font-size: 1.2rem;
 }
 
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
+footer, header {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+main {
+  flex-grow: 1;
+  flex-shrink: 0;
+}
 
 
 
@@ -161,7 +175,7 @@ section {
 }
 
 /* Weather Widget */
-.weather-widget {
+.weather-widget, .funfact {
   text-align: center;
   background-color: #f8f9fa;
   border-radius: 10px;
@@ -170,7 +184,15 @@ section {
   margin-bottom: 20px;
 }
 
+#utilities {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
+#weather, #funfact {
+  max-width: 40%;
+}
 
 
 
@@ -200,7 +222,6 @@ footer {
   padding: 15px;
   margin-top: auto;
   font-size: 0.9rem;
-  position: fixed;
   width: 100%;
   bottom: 0;
 }
@@ -215,6 +236,7 @@ footer p {
 
 /* Calendar */
 table {
+  table-layout: fixed;
   width: 100%;
   margin: 20px auto;
   border-collapse: collapse;
@@ -264,6 +286,9 @@ td:hover {
   border: rgb(214, 0, 0) solid 2px;
 }
 
+.table-container {
+  margin: 0 5%;
+}
 
 
 /* Hover Overlay Effect */
@@ -493,4 +518,16 @@ button:hover {
 
 .user-form-container .btn-delete:hover {
   background-color: rgb(165, 0, 0);
+}
+
+
+/* error message styling */
+
+.form-error, .error-p {
+  font-size: 125%;
+  color: rgb(216, 0, 0);
+}
+
+.error-p {
+  text-align: center;
 }

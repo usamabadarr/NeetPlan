@@ -36,6 +36,7 @@ function TodayEvents() {
                     <th>Start Time</th>
                     <th>End Time</th>
                     <th>Notes</th>
+                    <th>Edit</th>
                   </tr>
                 </thead>
                 <tbody>
