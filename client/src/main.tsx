@@ -60,7 +60,7 @@ const router = createBrowserRouter([
         element: <EventCreatePage/>
       },
       {
-        path: '/delete-confirm',
+        path: '/confirmdelete',
         element: <DeleteConfirmPage/>
       },
       {

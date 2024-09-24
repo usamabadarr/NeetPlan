@@ -30,7 +30,7 @@ const UserPage = () => {
     }
 
     const DeleteConfirm = () => {
-        window.location.assign('/delete-confirm')
+        window.location.assign('/confirmdelete')
     }
 
     const handleSubmit = async (event: FormEvent) => {
@@ -73,10 +73,10 @@ const UserPage = () => {
               Update
             </button>
             <button className='btn btn-primary' onClick={ReturnHome}>
-                Cancel
+              Cancel
             </button>
             <button className='btn btn-primary btn-delete' onClick={DeleteConfirm}>
-                Delete
+              Delete
             </button>
           </div>
         </form>
