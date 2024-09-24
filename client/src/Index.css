@@ -392,6 +392,9 @@ button:hover {
   text-decoration: none;
 }
 
+.login-notice a:hover {
+  color: #0056b3
+}
 
 
 
