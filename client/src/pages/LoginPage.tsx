@@ -10,6 +10,8 @@ const LoginPage = () => {
       password: '',
     });
   
+    const [errormsg, setErrormsg] = useState('')
+
     const handleChange = (
       event: ChangeEvent<HTMLInputElement | HTMLSelectElement>
     ) => {
@@ -28,6 +30,7 @@ const LoginPage = () => {
         auth.login(data.token);
       } catch (err) {
         console.error('Failed to login', err);
+        setErrormsg('Authentication failed')
       }
     };
   
@@ -63,6 +66,9 @@ const LoginPage = () => {
             <button className='btn btn-primary loginButton' type='submit'>
               Login
             </button>
+            <>
+              {errormsg? (<p className="form-error">{errormsg}</p>): (<></>)}
+            </>
           </div>
         </form>
       </div>
