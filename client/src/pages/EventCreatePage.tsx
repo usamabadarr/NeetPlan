@@ -1,9 +1,11 @@
 import { createEvent} from "../api/eventAPI"
 import { useState, ChangeEvent, FormEvent } from "react";
 import { EventData } from "../interfaces/EventData";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function EventCreatePage() {
+
+    const navigate = useNavigate()
 
     const [eventNew, setEventNew] = useState<EventData>({
         name: '',
@@ -34,7 +36,7 @@ function EventCreatePage() {
               return
             }
             await createEvent(eventNew);
-            window.location.assign('/')
+            navigate('/')
         } catch (err) {
           console.error('Failed to create event', err);
         }
