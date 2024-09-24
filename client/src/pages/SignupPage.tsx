@@ -106,14 +106,13 @@ const SignupPage = () => {
             <button className='btn btn-primary loginButton' type='submit'>
               <Link to="/">Back</Link>
             </button>
-            <>
-              {errormsg? (<p className="form-error">{errormsg}</p>): (<></>)}
-            </>
-            &nbsp;
             <button className='btn btn-primary loginButton' type='submit'>
               Signup
             </button>
           </div>
+          <>
+            {errormsg? (<p className="form-error">{errormsg}</p>): (<></>)}
+          </>
         </form>
       </div>
     );
