@@ -59,6 +59,9 @@ a:hover {
   color: #e3f2fd;
 }
 
+form {
+  min-width: 300px;
+}
 
 
 
@@ -380,6 +383,11 @@ button:hover {
 
 /* Landing Page Syles */
 
+.login-notice {
+  text-align: center;
+  margin-top: 20px;
+}
+
 .login-notice a {
   text-decoration: none;
 }
@@ -402,7 +410,7 @@ button:hover {
   color: black;
 }
 
-.login-form div .loginButton {
+.login-form div .loginButton  {
   width: 100px;
 }
 
@@ -412,7 +420,26 @@ button:hover {
 }
 
 
+.login-form-container, .signup-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
+.login-form-container label, .signup-form-container label {
+  display: block;
+}
+
+.login-form-container .form-btn-container, .signup-form-container .form-btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.login-form-container input, .signup-form-container input {
+  width: 100%;
+}
 
 
 /* Sign Up Page Styles */
@@ -504,7 +531,7 @@ button:hover {
   justify-content: space-between;
 }
 
-.user-form-container input, .event-form-container textarea {
+.user-form-container input {
   width: 100%;
 }
 

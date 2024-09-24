@@ -57,7 +57,7 @@ const SignupPage = () => {
     };
   
     return (
-      <div className='form-container'>
+      <div className='form-container signup-form-container'>
         <form className='form login-form' onSubmit={handleSubmit}>
           <h1>Signup</h1>
           <div className='form-group'>
@@ -102,22 +102,19 @@ const SignupPage = () => {
               onChange={handleChange}
             />
           </div>
-          <div className='form-group'>
-            <button className='btn btn-primary' type='submit'>
+          <div className='form-group form-btn-container'>
+            <button className='btn btn-primary loginButton' type='submit'>
               <Link to="/">Back</Link>
             </button>
             <>
               {errormsg? (<p className="form-error">{errormsg}</p>): (<></>)}
             </>
             &nbsp;
-            <button className='btn btn-primary' type='submit'>
+            <button className='btn btn-primary loginButton' type='submit'>
               Signup
             </button>
           </div>
         </form>
-        <button className='btn btn-primary' type='submit'>
-              <Link to="/">Back</Link>
-        </button>
       </div>
     );
   };

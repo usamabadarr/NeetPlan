@@ -35,7 +35,7 @@ const LoginPage = () => {
     };
   
     return (
-      <div className='form-container'>
+      <div className='form-container login-form-container'>
         <form className='form login-form' onSubmit={handleSubmit}>
           <h1>Login</h1>
           <div className='form-group'>
@@ -58,7 +58,7 @@ const LoginPage = () => {
               onChange={handleChange}
             />
           </div>
-          <div className='form-group'>
+          <div className='form-group form-btn-container'>
             <button className='btn btn-primary loginButton' type='submit'>
               <Link to="/">Back</Link>
             </button>
