@@ -51,7 +51,7 @@ function EventEditPage() {
           }
           if (id) {
               await updateEvent(eventUpdate, id);
-              navigate('/')
+              navigate('/all')
           }
         } catch (err) {
           console.error('Failed to edit event', err);

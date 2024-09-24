@@ -36,7 +36,7 @@ function EventCreatePage() {
               return
             }
             await createEvent(eventNew);
-            navigate('/')
+            navigate('/all')
         } catch (err) {
           console.error('Failed to create event', err);
         }

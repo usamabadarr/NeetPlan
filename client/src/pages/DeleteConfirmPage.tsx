@@ -11,11 +11,13 @@ const DeleteConfirmPage = () => {
     }
 
     return(
-        <>
-            <h1 className="delete-alert">Are you sure you want to delete your profile? All saved events will be lost</h1>
-            <button className="btn btn-delete" onClick={confirmDelete}>Delete</button>
-            <Link to='/'><button className="btn">Cancel</button></Link>
-        </>
+        <div className="dlt-container">
+            <h2 className="dlt-alert">Are you sure you want to delete your profile? All saved events will be lost</h2>
+            <div className="dlt-btn-container">
+                <Link to='/'><button className="btn btn-primary">Cancel</button></Link>
+                <button className="btn dlt-btn btn-primary" onClick={confirmDelete}>Delete</button>
+            </div>
+        </div>
     )
 }
 
