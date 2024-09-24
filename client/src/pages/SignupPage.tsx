@@ -61,8 +61,6 @@ const SignupPage = () => {
         <form className='form login-form' onSubmit={handleSubmit}>
           <h1>Signup</h1>
           <div className='form-group'>
-            <label>Email</label>
-            <p className="form-req">*Required.</p>
             <label>Email:</label>
             <input
               className='form-input'
@@ -71,10 +69,9 @@ const SignupPage = () => {
               value={signupData.email || ''}
               onChange={handleChange}
             />
+            <p className="form-req">*Required</p>
           </div>
           <div className='form-group'>
-            <label>Password</label>
-            <p className="form-req">*Required.</p>
             <label>Password:</label>
             <input
               className='form-input'
@@ -83,11 +80,10 @@ const SignupPage = () => {
               value={signupData.password || ''}
               onChange={handleChange}
             />
+            <p className="form-req">*Required</p>            
           </div>
           <div className='form-group'>
-            <label>Name</label>
             <label>Name:</label>
-            <p className='optional'> *optional</p>
             <input
               className='form-input'
               type='text'
@@ -97,9 +93,7 @@ const SignupPage = () => {
             />
           </div>
           <div className='form-group'>
-            <label>Zip Code</label>
             <label>Zip Code:</label>
-            <p className='optional'> *optional.</p>
             <input
               className='form-input'
               type='text'

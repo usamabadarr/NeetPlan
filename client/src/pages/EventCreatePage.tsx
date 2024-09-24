@@ -46,8 +46,7 @@ function EventCreatePage() {
               <form className='form login-form' onSubmit={handleSubmit}>
                 <h1>Event details</h1>
                 <div className='form-group'>
-                  <label>Event Name</label>
-                  <p className="form-req">*Required.</p>
+                  <label>Event Name:</label>
                   <input
                     className='form-input'
                     type='text'
@@ -55,10 +54,10 @@ function EventCreatePage() {
                     value={eventNew.name || ''}
                     onChange={handleChange}
                   />
+                  <p className="form-req">*Required.</p>
                 </div>
                 <div className='form-group'>
-                  <label>Date</label>
-                  <p className="form-req">*Required. Please use mm/dd/yyyy format.</p>
+                  <label>Date:</label>
                   <input
                     className='form-input'
                     type='text'
@@ -66,9 +65,10 @@ function EventCreatePage() {
                     value={eventNew.date || ''}
                     onChange={handleChange}
                   />
+                  <p className="form-req">*Required. Please use mm/dd/yyyy format.</p>
                 </div>
                 <div className='form-group'>
-                  <label>Start Time</label>
+                  <label>Start Time:</label>
                   <input
                     className='form-input'
                     type='text'
@@ -78,7 +78,7 @@ function EventCreatePage() {
                   />
                 </div>
                 <div className='form-group'>
-                  <label>End Time</label>
+                  <label>End Time:</label>
                   <input
                     className='form-input'
                     type='text'
@@ -88,7 +88,7 @@ function EventCreatePage() {
                   />
                 </div>
                 <div className='form-group'>
-                  <label>Notes</label>
+                  <label>Notes:</label>
                   <textarea
                     className='form-input'
                     name='notes'
