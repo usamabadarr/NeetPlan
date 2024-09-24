@@ -18,7 +18,7 @@ const Navbar = () => {
 
     return (
         <header>
-                <h1>Daily Planner</h1>
+                <h1>NeetPlan</h1>
                 <nav className = 'nav'>
                     {loginCheck? (
                         <ul>

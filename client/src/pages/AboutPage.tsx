@@ -30,8 +30,8 @@ const AboutPage: React.FC = () => {
     return (
         <>
             <section>
-                <h2 className = 'aboutTitle'>About our Daily Planner</h2>
-                <p>Welcome to Daily Planner—your all-in-one solution for staying organized and managing your day effectively! Designed with simplicity and productivity in mind, our planner combines several powerful features that help you take control of your time and tasks.</p>
+                <h2 className = 'aboutTitle'>About NeetPlan</h2>
+                <p>Welcome to NeetPlan—your all-in-one solution for staying organized and managing your day effectively! Designed with simplicity and productivity in mind, our planner combines several powerful features that help you take control of your time and tasks.</p>
 
                 <h2 className = 'aboutTitle'>Key Features</h2>
                 
