@@ -1,20 +1,24 @@
+import { Router, Request, Response } from "express";
+
+const router = Router()
 
 export interface FactResponse {
     fact: string;
   }
   
-  const API_URL = `https://api.api-ninjas.com/v1/facts`;
+
   
   /**
    * Fetches a fun fact from the API
    */
-  export const fetchFact = async (): Promise<string> => {
+    export const fetchFact = async (): Promise<string> => {
+    const API_URL = `https://api.api-ninjas.com/v1/facts`;
     try {
       const response = await fetch(API_URL, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          'X-Api-Key': import.meta.env.VITE_FUN_FACTS_API_KEY as string, // Ensure type safety
+          'X-Api-Key': `${process.env.VITE_FUN_FACTS_API_KEY}`, // Ensure type safety
         },
       });
   
@@ -29,3 +33,17 @@ export interface FactResponse {
       throw new Error('Oops! Something went wrong while fetching a fact.');
     }
   };
+
+
+router.get('/', async (_req: Request, res: Response) => {
+  try {
+    const fact = await fetchFact()
+    res.json({message: fact})
+  } catch (error) {
+    res.status(400).json({message: 'Unable to fetch fun fact'})
+  }
+  
+})
+
+
+export default router

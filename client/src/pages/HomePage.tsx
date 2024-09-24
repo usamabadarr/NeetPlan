@@ -6,6 +6,7 @@ import TaskList from '../components/TaskList';
 import WeatherWidget from '../components/WeatherWidget';
 // import Reminders from '../components/Reminders';
 import auth from '../utils/auth';
+import FunFact from '../components/FunFact';
 
 function App() {
   // // Storing User Data
@@ -57,12 +58,16 @@ function App() {
           <h2>User Profile</h2>
           <UserProfile user={user} />
         </section>
-
-        <section id="weather">
-          <h2>Weather</h2>
-          <WeatherWidget weather={weather} />
+        <section id="utilities">
+          <div id="weather">
+            <h2>Weather</h2>
+            <WeatherWidget weather={weather} />
+          </div>
+          <div id="funfact">
+            <h2>Fun Fact</h2>
+            <FunFact/>
+          </div>
         </section>
-
         {/* Task List Section */}
         <section id="tasks">
           <h2>Today's Events</h2>
