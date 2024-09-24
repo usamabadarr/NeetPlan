@@ -42,7 +42,7 @@ function EventCreatePage() {
 
     return (
         <>
-            <div className='form-container'>
+            <div className='event-form-container'>
               <form className='form login-form' onSubmit={handleSubmit}>
                 <h1>Event details</h1>
                 <div className='form-group'>
@@ -96,18 +96,16 @@ function EventCreatePage() {
                     onChange={handleChange}
                   />
                 </div>
-                <div className='form-group'>
+                <div className='form-group form-btn-container'>
                   <button className='btn btn-primary' type='submit'>
                     Create
                   </button>
+                  <Link to="/calendar"><button className="btn btn-primary">Cancel</button></Link>
                 </div>
                   <>
                     {errormsg? (<p className="form-error">{errormsg}</p>): (<></>)}
                   </>
               </form>
-              <div>
-                <button className="btn"><Link to="/calendar">Cancel</Link></button>
-              </div>
             </div>
         </>
     )

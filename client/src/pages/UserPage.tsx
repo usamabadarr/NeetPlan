@@ -45,7 +45,7 @@ const UserPage = () => {
     };
   
     return (
-      <div className='form-container'>
+      <div className='form-container user-form-container'>
         <form className='form login-form' onSubmit={handleSubmit}>
           <h1>Change user info</h1>
           <div className='form-group'>
@@ -68,20 +68,18 @@ const UserPage = () => {
               onChange={handleChange}
             />
           </div>
-          <div className='form-group'>
+          <div className='form-group form-btn-container'>
             <button className='btn btn-primary' type='submit'>
               Update
             </button>
-          </div>
-        </form>
-        <div>
-            <button className='btn' onClick={ReturnHome}>
+            <button className='btn btn-primary' onClick={ReturnHome}>
                 Cancel
             </button>
-            <button className='btn btn-delete' onClick={DeleteConfirm}>
+            <button className='btn btn-primary btn-delete' onClick={DeleteConfirm}>
                 Delete
             </button>
-        </div>
+          </div>
+        </form>
       </div>
     );
   };
