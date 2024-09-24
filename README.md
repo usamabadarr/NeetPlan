@@ -50,7 +50,8 @@ To run the Daily Planner locally, follow these steps:
 
 `Clone the repository:`
 
-`` git clone https://github.com/yourusername/daily-planner.git ``
+
+ git clone git@github.com:kc-claas/daily-planner.git
 
 Create an account or log in to manage your tasks.
 
