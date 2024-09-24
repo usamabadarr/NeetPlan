@@ -32,7 +32,7 @@ Member 2: Name (GitHub: username2)
 
 Member 3: Name (GitHub: username3)
 
-Member 4: Name (GitHub: username4)
+Keith Claas (kc-claas)
 
 ## Features
 

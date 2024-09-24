@@ -28,6 +28,8 @@ const Navbar = () => {
                                 <Link to = '/all'><li className = 'nav-item'>View All Events</li></Link>
                                 <Link to = '/user'><li className = 'nav-item'>User Settings</li></Link>      
                                 <Link to='' onClick={auth.logout}><li className = 'nav-item'>Logout</li></Link>
+                                <Link to = '/about'><li className = 'nav-item'>About</li></Link>  
+
                         </ul>
                     ) : (
                     <>
