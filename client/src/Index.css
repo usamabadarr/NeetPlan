@@ -443,10 +443,6 @@ button:hover {
   color: black;
 }
 
-.contact-form div .form-input-message {
-  
-}
-
 .contact-form div .submitButton {
   width: 100px;
 }
@@ -530,4 +526,40 @@ button:hover {
 
 .error-p {
   text-align: center;
+}
+
+
+/* delete profile page */
+
+.dlt-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dlt-alert {
+  font-size: 150%;
+  color: rgb(216, 0, 0);
+}
+
+.dlt-btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 10%;
+  flex-wrap: wrap;
+}
+
+.dlt-btn-container .btn {
+  min-width: 200px;
+  min-height: 80px;
+  margin: 20px 40px
+}
+
+.dlt-btn-container .dlt-btn {
+  background-color: red;
+}
+
+.dlt-btn-container .dlt-btn:hover {
+  background-color: rgb(165, 0, 0);
 }
