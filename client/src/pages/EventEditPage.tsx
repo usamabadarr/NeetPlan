@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom"
+import { useParams, Link, useNavigate } from "react-router-dom"
 import { useState, useEffect, ChangeEvent, FormEvent } from "react"
 
 import { getSingleEvent, deleteEvent, updateEvent } from "../api/eventAPI"
@@ -6,6 +6,8 @@ import { EventData } from "../interfaces/EventData"
 
 
 function EventEditPage() {
+
+    const navigate = useNavigate()
 
     const {id} = useParams()
 
@@ -49,7 +51,7 @@ function EventEditPage() {
           }
           if (id) {
               await updateEvent(eventUpdate, id);
-              window.location.assign('/calendar')
+              navigate('/')
           }
         } catch (err) {
           console.error('Failed to edit event', err);
@@ -59,7 +61,7 @@ function EventEditPage() {
     const deleteThis = () => {
       if (id) {
       deleteEvent(id)
-      window.location.assign('/calendar')
+      navigate('/')
       }
     }
 
@@ -123,7 +125,7 @@ function EventEditPage() {
                   <button className='btn btn-primary' type='submit'>
                     Update
                   </button>
-                  <Link to="/calendar"><button className="btn btn-primary">Cancel</button></Link>
+                  <Link to="/"><button className="btn btn-primary">Cancel</button></Link>
                   <button className="btn btn-delete btn-primary" onClick={deleteThis}>Delete</button>
                 </div>
                 <>

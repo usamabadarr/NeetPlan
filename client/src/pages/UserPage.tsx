@@ -1,6 +1,7 @@
 import { updateUser } from "../api/userAPI"
 import { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import auth from "../utils/auth";
+import { Link } from "react-router-dom";
 
 const UserPage = () => {
   
@@ -24,14 +25,7 @@ const UserPage = () => {
         [name]: value,
       });
     };
-  
-    const ReturnHome = () => {
-        window.location.assign('/')
-    }
 
-    const DeleteConfirm = () => {
-        window.location.assign('/confirmdelete')
-    }
 
     const handleSubmit = async (event: FormEvent) => {
       event.preventDefault();
@@ -72,12 +66,12 @@ const UserPage = () => {
             <button className='btn btn-primary' type='submit'>
               Update
             </button>
-            <button className='btn btn-primary' onClick={ReturnHome}>
+            <Link to='/'><button className='btn btn-primary'>
               Cancel
-            </button>
-            <button className='btn btn-primary btn-delete' onClick={DeleteConfirm}>
+            </button></Link>
+            <Link to='/confirmdelete'><button className='btn btn-primary btn-delete'>
               Delete
-            </button>
+            </button></Link>
           </div>
         </form>
       </div>
