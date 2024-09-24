@@ -59,7 +59,7 @@ function EventEditPage() {
     const deleteThis = () => {
       if (id) {
       deleteEvent(id)
-      window.location.assign('/calendar')
+      window.location.assign('/')
       }
     }
 
@@ -123,7 +123,7 @@ function EventEditPage() {
                   <button className='btn btn-primary' type='submit'>
                     Update
                   </button>
-                  <Link to="/calendar"><button className="btn btn-primary">Cancel</button></Link>
+                  <Link to="/"><button className="btn btn-primary">Cancel</button></Link>
                   <button className="btn btn-delete btn-primary" onClick={deleteThis}>Delete</button>
                 </div>
                 <>

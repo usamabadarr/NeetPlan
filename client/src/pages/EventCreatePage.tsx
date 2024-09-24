@@ -34,7 +34,7 @@ function EventCreatePage() {
               return
             }
             await createEvent(eventNew);
-            window.location.assign('/calendar')
+            window.location.assign('/')
         } catch (err) {
           console.error('Failed to create event', err);
         }
@@ -100,7 +100,7 @@ function EventCreatePage() {
                   <button className='btn btn-primary' type='submit'>
                     Create
                   </button>
-                  <Link to="/calendar"><button className="btn btn-primary">Cancel</button></Link>
+                  <Link to="/"><button className="btn btn-primary">Cancel</button></Link>
                 </div>
                   <>
                     {errormsg? (<p className="form-error">{errormsg}</p>): (<></>)}
