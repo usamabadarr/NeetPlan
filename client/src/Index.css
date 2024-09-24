@@ -266,8 +266,6 @@ td:hover {
 
 
 
-
-
 /* Hover Overlay Effect */
 .hover-overlay {
   position: relative;
@@ -430,4 +428,69 @@ button:hover {
 
 .contact-form {
   padding-bottom: 80px;
+}
+
+
+/* event form styles */
+
+.event-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.event-form-container label {
+  display: block;
+}
+
+.event-form-container .form-btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.event-form-container input, .event-form-container textarea {
+  width: 100%;
+}
+
+/* delete buttons */
+
+.event-form-container .btn-delete {
+  background-color: red;
+}
+
+.event-form-container .btn-delete:hover {
+  background-color: rgb(165, 0, 0);
+}
+
+
+/* user edit style */
+.user-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.user-form-container label {
+  display: block;
+}
+
+.user-form-container .form-btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.user-form-container input, .event-form-container textarea {
+  width: 100%;
+}
+
+.user-form-container .btn-delete {
+  background-color: red;
+}
+
+.user-form-container .btn-delete:hover {
+  background-color: rgb(165, 0, 0);
 }
