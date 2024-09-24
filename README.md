@@ -32,7 +32,7 @@ Sergio Torres (GitHub: SirrBarnes)
 
 Usama Badar (GitHub: usamabadarr)
 
-Keith Claas (kc-claas)
+Keith Claas (GitHub: kc-claas)
 
 ## Features
 
@@ -40,7 +40,7 @@ Technologies Used:
 
 Frontend: HTML, CSS, JavaScript, and TypeScript
 
-Backend: JavaScript, TypeScript, NodeJS, Postgres, Web APIs, and JWT
+Backend: JavaScript, TypeScript, React, NodeJS, Postgres, Web APIs, and JWT
 
 Database: Postgres
 
