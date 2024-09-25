@@ -20,10 +20,10 @@ To use, navigate to the deployed site: [https://daily-planner-xw7d.onrender.com/
 This application is covered under the [MIT](./LICENSE) license
 
 ## Contributors
-- Jarvis Young - jarvisyoung24
-- Sergio Torres - SirrBarnes
-- Usama Badar - usamabadarr
-- Keith Claas - kc-claas
+- Jarvis Young - [jarvisyoung24](https://github.com/jarvisyoung24)
+- Sergio Torres - [SirrBarnes](https://github.com/SirrBarnes)
+- Usama Badar - [usamabadarr](https://github.com/usamabadarr)
+- Keith Claas - [kc-claas](https://github.com/kc-claas)
 
 ## Technologies Used
 - HTML
