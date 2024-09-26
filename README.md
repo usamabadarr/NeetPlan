@@ -36,10 +36,10 @@ This application is covered under the [MIT](./LICENSE) license
 - Sequelize
 - NodeJS
 - JWTs
-- openweatherAPI
-- api ninja
+- OpenWeatherAPI
+- API Ninja
 
 ## Questions
-Github: [kc-claas](https://github.com/kc-claas)
+Github: [usamabadarr](https://github.com/usamabadarr)
 
-For additional questions, contact keithclaas@email.com
+For additional questions, contact usamabadarr@gmail.com
